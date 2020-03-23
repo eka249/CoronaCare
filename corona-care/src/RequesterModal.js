@@ -7,5 +7,9 @@ import "semantic-ui-css/semantic.min.css";
 
 
 class RequesterModal extends {
-    //comment here
+    constructor() {
+        super()
+        this.state =  {}
+    }
+    //error????
 }

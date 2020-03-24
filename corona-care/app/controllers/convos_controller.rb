@@ -1,0 +1,2 @@
+class ConvosController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class Convo < ApplicationRecord
+end

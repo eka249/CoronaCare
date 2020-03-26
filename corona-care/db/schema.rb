@@ -16,16 +16,26 @@ ActiveRecord::Schema.define(version: 2020_03_24_184239) do
   enable_extension "plpgsql"
 
   create_table "convos", force: :cascade do |t|
+    t.integer "fromID"
+    t.integer "toID"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "convo_id"
+    t.text "messagetext"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
+    t.integer "user_ID"
+    t.string "title"
+    t.text "description"
+    t.string "category"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +48,12 @@ ActiveRecord::Schema.define(version: 2020_03_24_184239) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "firstName"
+    t.string "lastName"
+    t.integer "phone"
+    t.string "username"
+    t.string "city"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import { React, Component } from "react";
+import "./App.css";
 // import { Button } from "semantic-ui-react";
-// import signInModal from "./signInModal";
+import signInModal from "./signInModal";
 import NavBar from "./NavBar";
 // import "semantic-ui-css/semantic.min.css";
 
@@ -18,7 +19,8 @@ class App extends Component {
 
   showSignInModal() {
     this.setState({
-      showSignInModal: !this.state.showSignInModal
+      ...this.state,
+      showSignInModal: true
     });
   }
 
@@ -28,9 +30,11 @@ class App extends Component {
         <div>
           <NavBar />
         </div>
-        <h1>CoronaCare</h1>
-        <br></br>
-        <h2>Please help support your local Wichita community.</h2>
+        <div>
+          <h1>CoronaCare</h1>
+          <br></br>
+          <h2>Please help support your local Wichita community.</h2>
+        </div>
       </div>
     );
   }

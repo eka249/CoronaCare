@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import { React, Component } from "react";
+import "./App.css";
 // import { Button } from "semantic-ui-react";
 // import signInModal from "./signInModal";
 import NavBar from "./NavBar";
@@ -25,12 +26,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
+        {/* <div>
           <NavBar />
-        </div>
+        </div> */}
         <h1>CoronaCare</h1>
-        <br></br>
-        <h2>Please help support your local Wichita community.</h2>
+        {/* <br></br> */}
+        {/* <h2>Please help support your local Wichita community.</h2> */}
       </div>
     );
   }

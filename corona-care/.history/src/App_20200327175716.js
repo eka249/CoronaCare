@@ -25,12 +25,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
+        {/* <div>
           <NavBar />
-        </div>
+        </div> */}
         <h1>CoronaCare</h1>
-        <br></br>
-        <h2>Please help support your local Wichita community.</h2>
+        {/* <br></br> */}
+        {/* <h2>Please help support your local Wichita community.</h2> */}
       </div>
     );
   }

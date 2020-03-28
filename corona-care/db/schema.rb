@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_184239) do
   create_table "users", force: :cascade do |t|
     t.string "firstName"
     t.string "lastName"
-    t.integer "phone"
+    t.bigint "phone"
     t.string "username"
     t.string "city"
     t.string "password_digest"

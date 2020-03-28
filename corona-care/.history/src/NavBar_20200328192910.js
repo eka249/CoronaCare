@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-
 import { Menu } from "semantic-ui-react";
+// import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class NavBar extends Component {
   state = { activeItem: "home", showNewModal: false };
@@ -15,7 +14,7 @@ class NavBar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <nav>
+      <div>
         <Menu pointing secondary>
           <Menu.Item
             //   <Link to= '/'{name}>{name}</Link>
@@ -41,7 +40,7 @@ class NavBar extends Component {
             />
           </Menu.Menu>
         </Menu>
-      </nav>
+      </div>
     );
   }
 }

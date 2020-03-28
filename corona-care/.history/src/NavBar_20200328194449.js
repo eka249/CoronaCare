@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 
 import { Menu } from "semantic-ui-react";
 
+// import { BrowserRouter as Router, Link } from "react-router-dom";
+
 class NavBar extends Component {
   state = { activeItem: "home", showNewModal: false };
 

@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 // import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
-// ReactDOM.render(<NavBar />, document.querySelector("navbar"));
+ReactDOM.render(<NavBar />, document.querySelector("navbar"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

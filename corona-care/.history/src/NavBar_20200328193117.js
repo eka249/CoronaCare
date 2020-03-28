@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-
 import { Menu } from "semantic-ui-react";
 
+// import { BrowserRouter as Router, Link } from "react-router-dom";
+
 class NavBar extends Component {
-  state = { activeItem: "home", showNewModal: false };
+  state = { activeItem: "home", showNewModal: false, loggedOn: true };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -15,7 +15,7 @@ class NavBar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <nav>
+      <div>
         <Menu pointing secondary>
           <Menu.Item
             //   <Link to= '/'{name}>{name}</Link>
@@ -37,11 +37,13 @@ class NavBar extends Component {
             <Menu.Item
               name="Logout"
               active={activeItem === "Logout"}
-              onClick={this.handleItemClick}
+              onClick={
+                (this.handleItemClick, this.setState({ loggedOn: false }))
+              }
             />
           </Menu.Menu>
         </Menu>
-      </nav>
+      </div>
     );
   }
 }

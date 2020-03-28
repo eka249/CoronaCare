@@ -13,7 +13,7 @@ class NavBar extends Component {
     return (
       <div>
         <Menu pointing secondary>
-          <Menu.Item
+          <Menu.Button
             //   <Link to= '/'{name}>{name}</Link>
             name="home"
             active={activeItem === "home"}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
-// import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class NavBar extends Component {
   state = { activeItem: "home" };
@@ -14,7 +13,6 @@ class NavBar extends Component {
       <div>
         <Menu pointing secondary>
           <Menu.Item
-            //   <Link to= '/'{name}>{name}</Link>
             name="home"
             active={activeItem === "home"}
             onClick={this.handleItemClick}

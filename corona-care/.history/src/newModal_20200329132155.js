@@ -8,28 +8,22 @@ import {
   Input
 } from "semantic-ui-react";
 
-class NewModal extends Component {
+class newModal extends Component {
   state = {
     first_name: "default to user's first name",
     title: "",
     description: "",
     category: "",
-    location: ""
+    location: "",
+    modalOpen: false
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  showModal = () => {
-    this.setState({
-      modalOpen: !this.state.modalOpen
-    });
-  };
-
-  submitNewRequest = () => {
+  submitNewUser = () => {
     // e.preventDefault();
-    console.log("started new request without being a user");
-    fetch("http://localhost:3000/requests", {
+    console.log("started post new user from front end");
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,16 +31,26 @@ class NewModal extends Component {
         Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
-        title: this.state.title,
+        email: this.state.email,
         password_digest: this.state.password,
-        description: this.state.description,
-        category: this.state.category,
-        location: this.state.location
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        unit: this.state.unit,
+        role: this.state.role
       })
     })
       .then(response => response.json())
-      .then(() => this.props.getRequests())
-      .then(this.showModal());
+      .then(() => this.props.getUsers());
+  };
+  showModal = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  };
+
+  handleFrontEndSubmit = () => {
+    this.submitNewUser();
+    this.showModal();
   };
 
   render() {
@@ -62,7 +66,7 @@ class NewModal extends Component {
           color="green"
           content="Create New User"
         >
-          <Modal.Header as="h3">Enter New Request Details</Modal.Header>
+          <Modal.Header as="h3">Enter New User Details</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field
@@ -135,4 +139,4 @@ class NewModal extends Component {
     );
   }
 }
-export default NewModal;
+export default AddNewUser;

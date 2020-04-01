@@ -1,6 +1,6 @@
 import React from "react";
 import { List } from "semantic-ui-react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Router from "react-router-dom";
 
 const Listing = props => (
   <List>
@@ -8,11 +8,7 @@ const Listing = props => (
       <List.Item>
         {/* <List.Icon name="marker" /> */}
         <List.Content>
-          <List.Header>
-            <Link to={`/requests/${props.request.id}`}>
-              {props.request.title}
-            </Link>
-          </List.Header>
+          <List.Header as="a">{props.request.title}</List.Header>
           <List.Description>{props.request.description}</List.Description>
         </List.Content>
       </List.Item>

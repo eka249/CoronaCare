@@ -3,13 +3,18 @@ import Listing from "./Listing";
 
 class List extends Component {
   constructor(props) {
-    super(props);
+    super();
+    
+    this.state = {
+      props.requests: []
+    };
   }
+
 
   render() {
     return (
       <div>
-        {this.props.requests.map((request, index) => {
+        {this.state.requests.map((request, index) => {
           return <Listing key={index} request={request} />;
         })}
       </div>

@@ -9,7 +9,8 @@ const Listing = props => (
         {/* <List.Icon name="marker" /> */}
         <List.Content>
           <List.Header>
-            <Link to={`/requests/${props.request.id}`}>
+            {props.request.title}
+            <Link to={`/requests${props.request.title.key}`}>
               {props.request.title}
             </Link>
           </List.Header>

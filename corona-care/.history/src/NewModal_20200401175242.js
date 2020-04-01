@@ -8,7 +8,7 @@ import {
   Input
 } from "semantic-ui-react";
 
-class NewModal extends Component {
+class newModal extends Component {
   state = {
     first_name: "default to user's first name",
     title: "",
@@ -20,15 +20,9 @@ class NewModal extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  showModal = () => {
-    this.setState({
-      modalOpen: !this.state.modalOpen
-    });
-  };
-
   submitNewRequest = () => {
     // e.preventDefault();
-    console.log("started new request without being a user");
+    console.log("started post new request from front end");
     fetch("http://localhost:3000/requests", {
       method: "POST",
       headers: {
@@ -135,4 +129,4 @@ class NewModal extends Component {
     );
   }
 }
-export default NewModal;
+export default newModal;

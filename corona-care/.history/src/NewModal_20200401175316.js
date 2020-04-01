@@ -28,7 +28,7 @@ class NewModal extends Component {
 
   submitNewRequest = () => {
     // e.preventDefault();
-    console.log("started new request without being a user");
+    console.log("started post new request from front end");
     fetch("http://localhost:3000/requests", {
       method: "POST",
       headers: {

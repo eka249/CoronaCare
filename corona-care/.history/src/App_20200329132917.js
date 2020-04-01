@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import List from "./List";
-import NewModal from "./NewModal";
 // import { Button } from "semantic-ui-react";
 // import signInModal from "./signInModal";
 import NavBar from "./NavBar";
@@ -44,7 +43,6 @@ class App extends Component {
         <br></br>
         <h2>Please help support your local Wichita community.</h2>
         <List requests={this.state.requests} />
-        <NewModal />
       </div>
     );
   }

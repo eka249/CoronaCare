@@ -9,9 +9,8 @@ const Listing = props => (
         {/* <List.Icon name="marker" /> */}
         <List.Content>
           <List.Header>
-            <Link to={`/requests/${props.request.id}`}>
-              {props.request.title}
-            </Link>
+            {props.request.title}
+            <Link to={`/requests${props.request.title.key}`}>Home</Link>
           </List.Header>
           <List.Description>{props.request.description}</List.Description>
         </List.Content>

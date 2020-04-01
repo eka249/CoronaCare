@@ -9,11 +9,14 @@ const Listing = props => (
         {/* <List.Icon name="marker" /> */}
         <List.Content>
           <List.Header>
-            <Link to={`/requests/${props.request.id}`}>
+            <Link to={`/requests${props.request.title.key}`}>
               {props.request.title}
             </Link>
           </List.Header>
-          <List.Description>{props.request.description}</List.Description>
+          <List.Description>
+            <Link to={`/requests${props.request.description.key}`}></Link>
+            {props.request.description}
+          </List.Description>
         </List.Content>
       </List.Item>
     </Router>

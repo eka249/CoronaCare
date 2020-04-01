@@ -40,12 +40,12 @@ class NavBar extends Component {
               >
                 <Link to="/messages">Messages</Link>
               </Menu.Item>
-              <Menu.Item
-                name="Logout"
-                active={activeItem === "Logout"}
-                onClick={this.handleItemClick}
-                //finish log out onClick when user is set up
-              ></Menu.Item>
+                <Menu.Item
+                  name="Logout"
+                  active={activeItem === "Logout"}
+                  onClick={this.handleItemClick}
+                  >Log Out</Menu.Item>
+              </Menu.Menu>
             </Menu>
           </nav>
         </Router>

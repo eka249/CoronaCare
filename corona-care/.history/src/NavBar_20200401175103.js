@@ -13,6 +13,11 @@ class NavBar extends Component {
   handleNewRequest = (e, { name }) => {
     this.setState({ activeItem: name, showNewModal: true });
   };
+  showModal = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  };
 
   render() {
     const { activeItem } = this.state;
@@ -40,12 +45,24 @@ class NavBar extends Component {
               >
                 <Link to="/messages">Messages</Link>
               </Menu.Item>
+
+              <Menu.Item
+                name="Create a Request"
+                active={activeItem === "Create a Request"}
+                onClick={this.handleNewRequest}
+              >
+                <Link to="/request">Create a Request</Link>
+              </Menu.Item>
+
+              {/* <Menu.Menu>
+              {" "}
+              position="right">
               <Menu.Item
                 name="Logout"
                 active={activeItem === "Logout"}
                 onClick={this.handleItemClick}
-                //finish log out onClick when user is set up
-              ></Menu.Item>
+              />
+            </Menu.Menu> */}
             </Menu>
           </nav>
         </Router>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import NewModal from "./newModal";
+import NewModal from "./newModal";
 import { Menu } from "semantic-ui-react";
 
 class NavBar extends Component {
@@ -13,13 +13,17 @@ class NavBar extends Component {
   handleNewRequest = (e, { name }) => {
     this.setState({ activeItem: name, showNewModal: true });
   };
+  showModal = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  };
 
   render() {
     const { activeItem } = this.state;
-    // if (this.state.showNewModal === true) {
-    //   return <NewModal />;
-    // }
-    //decided not to put modal as onClick in navbar; will have a constant button for prominence
+    if (this.state.showNewModal === true) {
+      return <NewModal />;
+    }
 
     return (
       <div>
@@ -40,12 +44,24 @@ class NavBar extends Component {
               >
                 <Link to="/messages">Messages</Link>
               </Menu.Item>
+
+              <Menu.Item
+                name="Create a Request"
+                active={activeItem === "Create a Request"}
+                onClick={this.handleNewRequest}
+              >
+                <Link to="/request">Create a Request</Link>
+              </Menu.Item>
+
+              {/* <Menu.Menu>
+              {" "}
+              position="right">
               <Menu.Item
                 name="Logout"
                 active={activeItem === "Logout"}
                 onClick={this.handleItemClick}
-                //finish log out onClick when user is set up
-              ></Menu.Item>
+              />
+            </Menu.Menu> */}
             </Menu>
           </nav>
         </Router>

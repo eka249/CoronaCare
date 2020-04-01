@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import List from "./List";
-import NewModal from "./NewModal";
 // import { Button } from "semantic-ui-react";
 // import signInModal from "./signInModal";
 import NavBar from "./NavBar";
@@ -16,23 +15,9 @@ class App extends Component {
       username: "",
       password: "",
       newUsername: "",
-      newPassword: "",
-      requests: []
+      newPassword: ""
     };
   }
-
-  getRequests = () => {
-    fetch("http://localhost:3000/requests", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accepts: "application/json",
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    })
-      .then(response => response.json())
-      .then(data => this.setState({ ...this.state, requests: data }));
-  };
 
   render() {
     return (
@@ -43,8 +28,7 @@ class App extends Component {
         <h1>CoronaCare</h1>
         <br></br>
         <h2>Please help support your local Wichita community.</h2>
-        <List requests={this.state.requests} />
-        <NewModal />
+        <List />
       </div>
     );
   }

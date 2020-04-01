@@ -4,6 +4,10 @@ import Listing from "./Listing";
 class List extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      requests: this.props.requests
+    };
   }
 
   render() {

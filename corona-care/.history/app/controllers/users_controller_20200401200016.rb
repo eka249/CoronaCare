@@ -20,6 +20,7 @@ class UsersController < ApplicationController
         puts "all params"
         puts params
         @user = User.create
+        # (first_name: params[:first_name], last_name: params[:last_name], password: params[:password], email: params[:email], unit: params[:unit])
         (user_params)
         puts "params after creating @user"
         puts params

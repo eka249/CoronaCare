@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "prettier": "^1.18.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -12,7 +11,12 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "webpack": "^1.12.9"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

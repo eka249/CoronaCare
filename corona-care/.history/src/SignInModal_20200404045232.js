@@ -8,7 +8,7 @@ class SignInModal extends Component {
   };
   handleChange = e => {
     let inputVal = e.target.name;
-    this.setState({ ...this.state, [inputVal]: e.target.value });
+    // this.setState({ ...this.state, [inputVal]: e.target.value });
   };
 
   handleSubmit = e => {
@@ -51,7 +51,6 @@ class SignInModal extends Component {
         <Modal.Content>
           <Form.Input
             label="Username "
-            name="username"
             // required
             type="text"
             placeholder="Username"
@@ -61,7 +60,6 @@ class SignInModal extends Component {
           <Form.Input
             label="Password "
             // required
-            name="password"
             type="password"
             placeholder="Password"
             id="password"

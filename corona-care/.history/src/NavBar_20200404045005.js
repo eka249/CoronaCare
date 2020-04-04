@@ -8,7 +8,7 @@ class NavBar extends Component {
   state = {
     activeItem: "home",
     showNewModal: false,
-    showSignInModal: false,
+    showSignInModal: true,
     logged_in: false,
     user: [],
     username: "",
@@ -23,13 +23,6 @@ class NavBar extends Component {
     this.setState({ activeItem: name, showNewModal: true });
   };
 
-  handleClickSignIn = () => {
-    {
-      this.setState({
-        showSignInModal: !this.state.showSignInModal
-      });
-    }
-  };
   handleSignIn = (e, { name }) => {
     // user will sign in and recieve token if user is valid
     e.preventDefault();
@@ -129,8 +122,10 @@ class NavBar extends Component {
             <Menu.Menu position="right">
               <Menu.Item
                 name="Log In"
-                active={activeItem === "Log In"}
-                onClick={this.handleClickSignIn}
+                // active={activeItem === "Log In"}
+                // onClick={this.setState({
+                //   showSignInModal: !this.state.showSignInModal
+                // })}
               ></Menu.Item>
             </Menu.Menu>
           </Menu>

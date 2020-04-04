@@ -23,7 +23,7 @@ class NavBar extends Component {
     this.setState({ activeItem: name, showNewModal: true });
   };
 
-  handleClickSignIn = () => {
+  show = () => {
     {
       this.setState({
         showSignInModal: !this.state.showSignInModal
@@ -130,7 +130,7 @@ class NavBar extends Component {
               <Menu.Item
                 name="Log In"
                 active={activeItem === "Log In"}
-                onClick={this.handleClickSignIn}
+                onClick={this.show}
               ></Menu.Item>
             </Menu.Menu>
           </Menu>

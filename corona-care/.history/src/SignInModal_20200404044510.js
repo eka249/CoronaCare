@@ -31,7 +31,7 @@ class SignInModal extends Component {
         if (json.jwt) {
           localStorage.setItem("token", json.jwt);
           this.props.getLoggedIn(json);
-          // this.setState({ role: json.user.role });
+          this.setState({ role: json.user.role });
         }
       })
       .then(() => this.props.history.push(`/${this.state.role}`));
@@ -51,7 +51,6 @@ class SignInModal extends Component {
         <Modal.Content>
           <Form.Input
             label="Username "
-            name="username"
             // required
             type="text"
             placeholder="Username"
@@ -61,7 +60,6 @@ class SignInModal extends Component {
           <Form.Input
             label="Password "
             // required
-            name="password"
             type="password"
             placeholder="Password"
             id="password"
@@ -79,7 +77,7 @@ class SignInModal extends Component {
             // }
           />
         </Modal.Actions>
-        {/* <Modal.Content>
+        <Modal.Content>
           <Header content="Or Sign Up!" as="h3"></Header>
 
           <Form.Input
@@ -121,7 +119,7 @@ class SignInModal extends Component {
             icon="pencil"
             content="Sign Up!"
           />
-        </Modal.Actions> */}
+        </Modal.Actions>
       </Modal>
     );
   }

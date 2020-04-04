@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SignInModal from "./SignInModal";
+import SignInModal, from './SignInModal'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import NewModal from "./newModal";
 import { Input, Menu } from "semantic-ui-react";
@@ -23,13 +23,6 @@ class NavBar extends Component {
     this.setState({ activeItem: name, showNewModal: true });
   };
 
-  handleClickSignIn = () => {
-    {
-      this.setState({
-        showSignInModal: !this.state.showSignInModal
-      });
-    }
-  };
   handleSignIn = (e, { name }) => {
     // user will sign in and recieve token if user is valid
     e.preventDefault();
@@ -130,7 +123,10 @@ class NavBar extends Component {
               <Menu.Item
                 name="Log In"
                 active={activeItem === "Log In"}
-                onClick={this.handleClickSignIn}
+                onClick={this.setState({
+                  ...this.state,
+                  showSignInModal: !showSignInModal
+                })}
               ></Menu.Item>
             </Menu.Menu>
           </Menu>

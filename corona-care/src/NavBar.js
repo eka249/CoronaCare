@@ -133,7 +133,9 @@ class NavBar extends Component {
             </Menu.Menu>
           </Menu>
         </nav>
-        {this.state.showSignInModal ? <SignInModal /> : null}
+        {this.state.showSignInModal ? (
+          <SignInModal handleClickSignIn={this.handleClickSignIn} />
+        ) : null}
       </div>
     );
   }

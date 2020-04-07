@@ -9,9 +9,9 @@ class List extends Component {
   render() {
     return (
       <div>
-        {/* {this.props.requests.map((request, index) => {
+        {this.props.requests.map((request, index) => {
           return <Listing key={index} request={request} />;
-        })} */}
+        })}
       </div>
     );
   }

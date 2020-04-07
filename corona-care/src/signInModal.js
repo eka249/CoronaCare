@@ -17,6 +17,12 @@ class SignInModal extends Component {
     let inputVal = e.target.name;
     this.setState({ ...this.state, [inputVal]: e.target.value });
   };
+  sendToLogIn = response => {
+    if (response.jwt) {
+      localStorage.setItem("token", response.jwt);
+      this.props.handleClickSignIn(response);
+    }
+  };
 
   handleSignIn = e => {
     // e.preventDefault();
@@ -35,13 +41,17 @@ class SignInModal extends Component {
       })
     })
       .then(response => response.json())
-      .then(json => {
-        if (json.jwt) {
-          localStorage.setItem("token", json.jwt);
-          // this.props.getLoggedIn(json);
-        }
-      })
-      .then(() => this.props.handleClickSignIn());
+      // .then(response => {
+      //   if (response.jwt) {
+      //     localStorage.setItem("token", response.jwt);
+      //   }
+      // })
+      .then(response =>
+        // console.log(response));
+        this.sendToLogIn(response)
+      );
+    // .then(response => console.log("jwt from response", response.jwt));
+    // .then(response => console.log("user from response", response.user))
   };
 
   handleSignUp = () => {
@@ -62,21 +72,12 @@ class SignInModal extends Component {
       })
     })
       .then(response => response.json())
-      .then(() => this.props.handleClickSignIn);
+      .then(() => this.props.handleClickSignIn());
   };
 
   render() {
     return (
-      <Modal
-        open={this.state.open}
-        //this is the reason why the modal isn't working; need to have an even that sets open as false when clicking outside object
-        // size="tiny"
-        // closeIcon={this.setState({
-        //   ...this.state,
-        //   open: false
-        // })}
-        // trigger={this.state.open}
-      >
+      <Modal open={this.state.open}>
         <Header content="Sign In" as="h2"></Header>
         <Modal.Content>
           <Form.Input
@@ -99,14 +100,7 @@ class SignInModal extends Component {
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button
-            content="Sign In"
-            // onClick={console.log("sign in hit")}
-            onClick={
-              this.handleSignIn
-              // , () => this.props.handleClickSignIn)
-            }
-          />
+          <Button content="Sign In" onClick={this.handleSignIn} />
         </Modal.Actions>
         <Modal.Content>
           <Header content="Or Sign Up!" as="h2"></Header>
@@ -167,11 +161,7 @@ class SignInModal extends Component {
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button
-            // type="submit"
-            onClick={this.handleSignUp}
-            content="Sign Up"
-          />
+          <Button onClick={this.handleSignUp} content="Sign Up" />
         </Modal.Actions>
       </Modal>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SignInModal from "./SignInModal";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import NewModal from "./newModal";
+import NewRequestModal from "./NewRequestModal";
 import { Input, Menu } from "semantic-ui-react";
 
 class NavBar extends Component {
@@ -9,8 +9,8 @@ class NavBar extends Component {
     activeItem: "home",
     showNewModal: false,
     showSignInModal: false,
+    showNewRequestModal: false,
     logged_in: this.props.logged_in,
-    user: [],
     username: "",
     password: ""
   };
@@ -23,55 +23,15 @@ class NavBar extends Component {
     this.setState({ activeItem: name, showNewModal: true });
   };
 
-  handleClickSignIn = () => {
-    console.log("hit handleClickSignIn");
+  handleClickSignIn = response => {
+    this.props.getLoggedIn(response);
     {
       this.setState({
-        showSignInModal: !this.state.showSignInModal
+        showSignInModal: !this.state.showSignInModal,
+        logged_in: true
       });
     }
   };
-  // handleSignIn = (e, { name }) => {
-  //   // user will sign in and recieve token if user is valid
-  //   e.preventDefault();
-
-  //   fetch("http://localhost:3000/auth", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accepts: "application/json",
-  //       Authorization: `Bearer ${localStorage.token}`
-  //     },
-  //     body: JSON.stringify({
-  //       username: this.state.username,
-  //       password: this.state.password
-  //     })
-  //   })
-  //     .then(response => response.json())
-  //     .then(response => console.log("this is the response", response))
-  //     .then(json => {
-  //       if (json.jwt) {
-  //         localStorage.setItem("token", json.jwt);
-  //         //user then will send the token json to sign in function to recieve user data
-  //         this.getLoggedIn(json);
-  //       }
-  //     })
-  //     .then(this.setState({ activeItem: name }));
-  // };
-
-  // getLoggedIn = data => {
-  //   fetch(
-  //     "http://localhost:3000/user/profile",
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accepts: "application/json",
-  //         Authorization: `Bearer ${localStorage.token}`
-  //       }
-  //     }.then(response => response.json())
-  //   ).then(this.setState({ user: data.user, logged_in: true }));
-  // };
 
   render() {
     const { activeItem } = this.state;
@@ -82,14 +42,14 @@ class NavBar extends Component {
           <Router>
             <nav>
               <Menu>
-                <Menu.Item>CoronaCare</Menu.Item>
                 <Menu.Item
                   name="home"
                   active={activeItem === "home"}
                   onClick={this.handleItemClick}
                 >
-                  <Link to="/"> Home </Link>
+                  <Link to="/"> CoronaCare</Link>
                 </Menu.Item>
+
                 <Menu.Item
                   name="Messages"
                   active={activeItem === "Create a Request"}
@@ -114,6 +74,9 @@ class NavBar extends Component {
 
           {this.state.showSignInModal ? (
             <SignInModal handleClickSignIn={this.handleClickSignIn} />
+          ) : null}
+          {this.state.showNewRequestModal ? (
+            <NewRequestModal user={this.props.user} />
           ) : null}
         </div>
       );

@@ -6,7 +6,6 @@ const Listing = props => (
   <List>
     <Router>
       <List.Item>
-        {/* <List.Icon name="marker" /> */}
         <List.Content>
           <List.Header>
             <Link to={`/requests/${props.request.id}`}>

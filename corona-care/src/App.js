@@ -66,6 +66,7 @@ class App extends Component {
         <NewRequestModal
           user={this.state.user}
           logged_in={this.state.logged_in}
+          getRequests={this.getRequests}
         />
         <h2>Please help support your local Wichita community.</h2>
         <List requests={this.state.requests} />

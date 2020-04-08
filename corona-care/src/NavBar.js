@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Redirect } from "react";
 import SignInModal from "./SignInModal";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NewRequestModal from "./NewRequestModal";
 import { Input, Menu } from "semantic-ui-react";
+import { browserHistory } from "react-router";
 
 class NavBar extends Component {
   constructor() {
@@ -28,6 +29,10 @@ class NavBar extends Component {
         showSignInModal: !this.state.showSignInModal
       });
     }
+  };
+
+  handleMessages = () => {
+    this.props.history.push("/myconvos");
   };
 
   handleNewRequest = (e, { name }) => {
@@ -63,12 +68,14 @@ class NavBar extends Component {
                 </Menu.Item>
 
                 <Menu.Item
-                  name="Messages"
-                  active={activeItem === "Create a Request"}
-                  onClick={this.handleItemClick}
+                  name="messages"
+                  active={activeItem === "messages"}
+                  onClick={(this.handleItemClick, this.handleMessages)}
+                  user={this.props.user}
                 >
-                  <Link to="/messages">Messages</Link>
+                  <Link to={"/myconvos"}>Messages</Link>
                 </Menu.Item>
+
                 <Menu.Menu position="right">
                   <Menu.Item>
                     <Input icon="search" placeholder="Search..." />

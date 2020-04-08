@@ -3,6 +3,7 @@ import { List } from "semantic-ui-react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Listing = props => (
+  // the below list returns need to have a margin on the left side of page and more clear separations between posts
   <List>
     <Router>
       <List.Item>

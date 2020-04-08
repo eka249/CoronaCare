@@ -1,3 +1,3 @@
 class ConvoSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :fromID, :toID
 end

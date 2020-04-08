@@ -12,3 +12,7 @@ requestTest = Request.create(user_ID: 1, title: "This is a test request", descri
 
 
 requestTest2 = Request.create(user_ID: 1, title: "Allie wants beans", description: "go to Taco Shop for me", category: "Urgent", location: "Harry and Webb")
+
+convotest1 = Convo.create(fromID: 1, toID: 2)
+convotest2 = Convo.create(fromID: 2, toID: 1)
+

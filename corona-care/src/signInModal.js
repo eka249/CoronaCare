@@ -27,7 +27,6 @@ class SignInModal extends Component {
   handleSignIn = e => {
     // e.preventDefault();
     //routes to auth#create on backend to recieve token
-    console.log("hit handleSignIN");
     fetch("http://localhost:3000/auth", {
       method: "POST",
       headers: {

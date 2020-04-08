@@ -10,7 +10,9 @@ class List extends Component {
     return (
       <div>
         {this.props.requests.map((request, index) => {
-          return <Listing key={index} request={request} />;
+          return (
+            <Listing key={index} request={request} user={this.props.user} />
+          );
         })}
       </div>
     );

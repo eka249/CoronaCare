@@ -1,9 +1,16 @@
 import React, { Component, Redirect } from "react";
+
 import SignInModal from "./SignInModal";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
 import NewRequestModal from "./NewRequestModal";
 import { Input, Menu } from "semantic-ui-react";
-import { browserHistory } from "react-router";
+import Messages from "./Messages";
 
 class NavBar extends Component {
   constructor() {
@@ -31,10 +38,6 @@ class NavBar extends Component {
     }
   };
 
-  handleMessages = () => {
-    this.props.history.push("/myconvos");
-  };
-
   handleNewRequest = (e, { name }) => {
     this.setState({ activeItem: name, showNewModal: !this.state.showNewModal });
   };
@@ -53,7 +56,6 @@ class NavBar extends Component {
     const { activeItem } = this.state;
 
     if (this.props.logged_in) {
-      console.log("logged in-should show correct navbar");
       return (
         <div>
           <Router>
@@ -70,10 +72,17 @@ class NavBar extends Component {
                 <Menu.Item
                   name="messages"
                   active={activeItem === "messages"}
-                  onClick={(this.handleItemClick, this.handleMessages)}
-                  user={this.props.user}
+                  onClick={this.handleItemClick}
                 >
-                  <Link to={"/myconvos"}>Messages</Link>
+                  <Link to="/myconvos">Messages</Link>
+                  <Switch>
+                    <Route
+                      path="/myconvos"
+                      render={routeProps => (
+                        <Messages {...routeProps} user={this.props.user} />
+                      )}
+                    />
+                  </Switch>
                 </Menu.Item>
 
                 <Menu.Menu position="right">

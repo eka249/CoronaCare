@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import List from "./List";
 import NewRequestModal from "./NewRequestModal";
 import NavBar from "./NavBar";
+import Messages from "./Messages";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import ReactDOM from "react-dom";
 
 // import "semantic-ui-css/semantic.min.css";
 
@@ -55,24 +57,53 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <NavBar
-            logged_in={this.state.logged_in}
-            getLoggedIn={this.getLoggedIn}
+        <Router>
+          <div>
+            <NavBar
+              logged_in={this.state.logged_in}
+              getLoggedIn={this.getLoggedIn}
+              user={this.state.user}
+              signOut={this.signOut}
+            />
+          </div>
+          <NewRequestModal
             user={this.state.user}
-            signOut={this.signOut}
+            logged_in={this.state.logged_in}
+            getRequests={this.getRequests}
           />
-        </div>
-        <NewRequestModal
-          user={this.state.user}
-          logged_in={this.state.logged_in}
-          getRequests={this.getRequests}
-        />
-        <h2>Please help support your local Wichita community.</h2>
-        <List requests={this.state.requests} />
+          <h2>Please help support your local Wichita community.</h2>
+          <List requests={this.state.requests} user={this.state.user} />
+          {/* <div> */}
+          {/* <Route
+              path="/myconvos"
+              render={routeProps => (
+                <Messages {...routeProps} user={this.state.user} />
+              )}
+            >
+              Messages
+            </Route> */}
+          {/* </div> */}
+          {/* <div>
+          <Router>
+            <div className="app">
+              <NavBar />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/myconvos" component={Messages} />
+              {/* <Route exact path="/directors" component={Directors} />
+              <Route exact path="/movies" component={Movies} /> */}
+          {/* </div>
+          </Router> */}
+          {/* </div> */}
+        </Router>
       </div>
     );
   }
 }
 
 export default App;
+// ReactDOM.render(
+//   <Router>
+//     <Route path="/myconvos" render={() => <div>Messages</div>} />
+//   </Router>,
+//   node
+// );

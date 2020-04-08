@@ -34,6 +34,10 @@ class App extends Component {
     // })
     // .then(response=>response.json())
   };
+  // signOut = () => {
+  //   localStorage.removeItem("token");
+  //   this.setState({ ...this.state, logged_in: false, user: null });
+  // };
 
   getRequests = () => {
     fetch("http://localhost:3000/requests", {
@@ -56,9 +60,13 @@ class App extends Component {
             logged_in={this.state.logged_in}
             getLoggedIn={this.getLoggedIn}
             user={this.state.user}
+            signOut={this.signOut}
           />
         </div>
-        <NewRequestModal />
+        <NewRequestModal
+          user={this.state.user}
+          logged_in={this.state.logged_in}
+        />
         <h2>Please help support your local Wichita community.</h2>
         <List requests={this.state.requests} />
       </div>

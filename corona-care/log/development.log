@@ -5098,3 +5098,538 @@ Processing by AuthController#create as */*
 Completed 202 Accepted in 228ms (Views: 1.3ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/requests" for ::1 at 2020-04-07 02:45:22 -0400
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ellyn/.rvm/gems/ruby-2.6.1/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 172ms (Views: 13.3ms | ActiveRecord: 177.8ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:46:09 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (1.6ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:48:42 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:49:13 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:49:57 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:50:05 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:52:11 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.7ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 02:54:19 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/requests" for ::1 at 2020-04-07 17:37:29 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ellyn/.rvm/gems/ruby-2.6.1/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (41.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.85ms)
+Completed 200 OK in 104ms (Views: 28.0ms | ActiveRecord: 54.3ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:39:48 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:40:26 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (9.0ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 13ms (Views: 2.4ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:41:51 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:42:21 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:42:46 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.58ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:43:26 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (12.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (2.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.22ms)
+Completed 200 OK in 18ms (Views: 2.7ms | ActiveRecord: 14.5ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:44:27 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (48.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (6.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 57ms (Views: 1.7ms | ActiveRecord: 54.8ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:44:59 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:45:16 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (1.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:45:24 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (1.6ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-07 17:45:57 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:22:56 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (1.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:24:40 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:27:40 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.5ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:28:25 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (1.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 11ms (Views: 2.8ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:29:14 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.44ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:30:11 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (3.0ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 12ms (Views: 2.4ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:30:26 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 202 Accepted in 235ms (Views: 5.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:32:01 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:32:16 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:32:25 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 202 Accepted in 226ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:32:36 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:32:42 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 202 Accepted in 228ms (Views: 1.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:32:55 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:33:00 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 202 Accepted in 227ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:33:17 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.19ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:33:23 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 202 Accepted in 230ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:33:50 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (32.9ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 37ms (Views: 3.1ms | ActiveRecord: 33.1ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:33:55 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 202 Accepted in 227ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:34:09 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.7ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 11ms (Views: 4.7ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:34:13 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 202 Accepted in 229ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/requests" for ::1 at 2020-04-08 01:35:27 -0400
+Processing by RequestsController#index as */*
+  Parameters: {"request"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/requests_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/auth" for ::1 at 2020-04-08 01:35:33 -0400
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"effie212", "password"=>"[FILTERED]", "auth"=>{"username"=>"effie212", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "effie212"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 202 Accepted in 227ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+

@@ -5,30 +5,41 @@ import NewRequestModal from "./NewRequestModal";
 import { Input, Menu } from "semantic-ui-react";
 
 class NavBar extends Component {
-  state = {
-    activeItem: "home",
-    showNewModal: false,
-    showSignInModal: false,
-    showNewRequestModal: false,
-    logged_in: this.props.logged_in,
-    username: "",
-    password: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      activeItem: "home",
+      showNewModal: false,
+      showSignInModal: false,
+      showNewRequestModal: false,
+      username: "",
+      password: ""
+    };
+  }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
   };
 
+  changeLogInState = () => {
+    {
+      this.setState({
+        ...this.state,
+        showSignInModal: !this.state.showSignInModal
+      });
+    }
+  };
+
   handleNewRequest = (e, { name }) => {
-    this.setState({ activeItem: name, showNewModal: true });
+    this.setState({ activeItem: name, showNewModal: !this.state.showNewModal });
   };
 
   handleClickSignIn = response => {
     this.props.getLoggedIn(response);
     {
       this.setState({
-        showSignInModal: !this.state.showSignInModal,
-        logged_in: true
+        ...this.state,
+        showSignInModal: !this.state.showSignInModal
       });
     }
   };
@@ -36,7 +47,8 @@ class NavBar extends Component {
   render() {
     const { activeItem } = this.state;
 
-    if (this.state.logged_in) {
+    if (this.props.logged_in) {
+      console.log("logged in-should show correct navbar");
       return (
         <div>
           <Router>
@@ -65,7 +77,7 @@ class NavBar extends Component {
                     name="Logout"
                     active={activeItem === "Logout"}
                     onClick={this.handleItemClick}
-                    //finish log out onClick when user is set up
+                    // onClick={this.props.signOut}
                   ></Menu.Item>
                 </Menu.Menu>
               </Menu>
@@ -91,7 +103,7 @@ class NavBar extends Component {
               <Menu.Item
                 name="Log In"
                 active={activeItem === "Log In"}
-                onClick={this.handleClickSignIn}
+                onClick={this.changeLogInState}
               ></Menu.Item>
             </Menu.Menu>
           </Menu>

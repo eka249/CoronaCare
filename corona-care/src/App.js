@@ -78,10 +78,10 @@ class App extends Component {
     // })
     // .then(response=>response.json())
   };
-  // signOut = () => {
-  //   localStorage.removeItem("token");
-  //   this.setState({ ...this.state, logged_in: false, user: null });
-  // };
+  signOut = () => {
+    localStorage.removeItem("token");
+    this.setState({ ...this.state, logged_in: false, user: null });
+  };
 
   getRequests = () => {
     fetch("http://localhost:3000/requests", {
@@ -142,7 +142,7 @@ class App extends Component {
           <SignInModal handleClickSignIn={this.handleClickSignIn} />
         ) : null}
 
-        <h2>Please help support your local Wichita community.</h2>
+        <h3>Please help support your local Wichita community</h3>
         <List requests={this.state.requests} user={this.state.user} />
       </div>
     );
@@ -181,7 +181,7 @@ class App extends Component {
                   name="Logout"
                   active={activeItem === "Logout"}
                   onClick={this.handleItemClick}
-                  // onClick={this.signOut}
+                  onClick={this.signOut}
                 ></Menu.Item>
               </Menu.Menu>
             </React.Fragment>
@@ -231,8 +231,8 @@ class App extends Component {
           {/* {this.state.showSignInModal ? (
             <SignInModal handleClickSignIn={this.handleClickSignIn} />
           ) : null} */}
+          {this.homePage()}
         </Router>
-        {this.homePage()}
       </div>
     );
 

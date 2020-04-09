@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
     def index
-        requests = Request.all
-        render json: requests
+        @requests = Request.all
+        render json: @requests
     end
 
     def create
@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
     end
 
     def update
-        @requestt = Request.find(params[:id])
+        @request = Request.find(params[:id])
         puts"hit update request"
         @request.update(request_params)
           render json: @request

@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import List from "./List";
 import NewRequestModal from "./NewRequestModal";
-import NavBar from "./NavBar";
+import SignInModal from "./SignInModal";
+
+// import NavBar from "./NavBar";
 import Messages from "./Messages";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
+import { Input, Menu } from "semantic-ui-react";
 
 // import "semantic-ui-css/semantic.min.css";
 
@@ -15,9 +24,42 @@ class App extends Component {
     this.state = {
       requests: [],
       logged_in: false,
-      user: null
+      user: null,
+      activeItem: "home",
+      showNewModal: false,
+      showSignInModal: false,
+      showNewRequestModal: false,
+      username: "",
+      password: ""
     };
   }
+
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+  };
+
+  changeLogInState = () => {
+    {
+      this.setState({
+        ...this.state,
+        showSignInModal: !this.state.showSignInModal
+      });
+    }
+  };
+
+  handleNewRequest = (e, { name }) => {
+    this.setState({ activeItem: name, showNewModal: !this.state.showNewModal });
+  };
+
+  handleClickSignIn = response => {
+    this.getLoggedIn(response);
+    {
+      this.setState({
+        ...this.state,
+        showSignInModal: !this.state.showSignInModal
+      });
+    }
+  };
 
   getLoggedIn = response => {
     this.setState({
@@ -54,56 +96,136 @@ class App extends Component {
       .then(data => this.setState({ ...this.state, requests: data }));
   };
 
-  render() {
+  homePageNav = () => {
     return (
       <div>
-        <Router>
-          <div>
-            <NavBar
-              logged_in={this.state.logged_in}
-              getLoggedIn={this.getLoggedIn}
+        <Menu.Item
+          name="home"
+          // active={activeItem === "home"}
+          onClick={this.handleItemClick}
+        >
+          <Link to="/"> CoronaCare</Link>
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item>
+            <Input icon="search" placeholder="Search..." />
+          </Menu.Item>
+        </Menu.Menu>
+      </div>
+    );
+  };
+
+  homePage = () => {
+    return (
+      <div>
+        {this.state.showNewRequestModal ? (
+          <NewRequestModal user={this.state.user} />
+        ) : null}
+
+        {this.state.showSignInModal ? (
+          <SignInModal handleClickSignIn={this.handleClickSignIn} />
+        ) : null}
+      </div>
+    );
+  };
+
+  render() {
+    const { activeItem } = this.state;
+
+    //  return (this.homePageNav()
+    //   this.homePage())
+
+    return this.state.logged_in ? (
+      <Router>
+        {this.homePage()}
+        <Menu>
+          <React.Fragment>
+            {/* <Menu.Item
+                  name="home"
+                  active={activeItem === "home"}
+                  onClick={this.handleItemClick}
+                >
+                  <Link to="/"> CoronaCare</Link>
+                </Menu.Item> */}
+            {this.homePageNav()}
+            <Menu.Item
+              name="messages"
+              active={activeItem === "messages"}
+              onClick={this.handleItemClick}
+              as={Link}
+              to="/myconvos"
+            >
+              <Messages user={this.state.user} />
+              Messages
+            </Menu.Item>
+          </React.Fragment>
+
+          <React.Fragment>
+            <Menu.Item
+              name="Logout"
+              active={activeItem === "Logout"}
+              onClick={this.handleItemClick}
+              // onClick={this.signOut}
+            ></Menu.Item>
+          </React.Fragment>
+        </Menu>
+
+        <React.Fragment>
+          <Route exact path="/myconvos">
+            {/* <Messages user={this.state.user} /> */}
+          </Route>
+        </React.Fragment>
+        {/* <NewRequestModal
               user={this.state.user}
-              signOut={this.signOut}
-            />
-          </div>
-          <NewRequestModal
+              logged_in={this.state.logged_in}
+              getRequests={this.getRequests}
+            /> */}
+        {/* <h2>Please help support your local Wichita community.</h2>
+            <List requests={this.state.requests} user={this.state.user} /> */}
+      </Router>
+    ) : (
+      <div>
+        {this.homePage()}
+        <nav>
+          <Menu>
+            {this.homePageNav()}
+            <Menu.Menu position="right">
+              <Menu.Item
+                name="Log In"
+                active={activeItem === "Log In"}
+                onClick={this.changeLogInState}
+              ></Menu.Item>
+            </Menu.Menu>
+          </Menu>
+        </nav>
+        {/* <NewRequestModal
             user={this.state.user}
             logged_in={this.state.logged_in}
             getRequests={this.getRequests}
           />
           <h2>Please help support your local Wichita community.</h2>
-          <List requests={this.state.requests} user={this.state.user} />
-          {/* <div> */}
-          {/* <Route
-              path="/myconvos"
-              render={routeProps => (
-                <Messages {...routeProps} user={this.state.user} />
-              )}
-            >
-              Messages
-            </Route> */}
-          {/* </div> */}
-          {/* <div>
-          <Router>
-            <div className="app">
-              <NavBar />
-              <Route exact path="/" component={Home} />
-              <Route exact path="/myconvos" component={Messages} />
-              {/* <Route exact path="/directors" component={Directors} />
-              <Route exact path="/movies" component={Movies} /> */}
-          {/* </div>
-          </Router> */}
-          {/* </div> */}
-        </Router>
+          <List requests={this.state.requests} user={this.state.user} /> */}
+        {/* {this.state.showSignInModal ? (
+            <SignInModal handleClickSignIn={this.handleClickSignIn} />
+          ) : null} */}
       </div>
     );
+
+    //     return(
+    //       <div>
+    //    <NewRequestModal
+    //     user={this.state.user}
+    //     logged_in={this.state.logged_in}
+    //     getRequests={this.getRequests}
+    //   />
+    // <h2>Please help support your local Wichita community.</h2>
+    // <List requests={this.state.requests} user={this.state.user} />
+    //   {this.state.showSignInModal ? (
+    //     <SignInModal handleClickSignIn={this.handleClickSignIn} />
+    //   ) : null}
+    //   </div>
+    //     )
   }
 }
 
 export default App;
-// ReactDOM.render(
-//   <Router>
-//     <Route path="/myconvos" render={() => <div>Messages</div>} />
-//   </Router>,
-//   node
-// );

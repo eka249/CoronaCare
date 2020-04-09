@@ -61,40 +61,48 @@ class NavBar extends Component {
           <Router>
             <nav>
               <Menu>
-                <Menu.Item
-                  name="home"
-                  active={activeItem === "home"}
-                  onClick={this.handleItemClick}
-                >
-                  <Link to="/"> CoronaCare</Link>
-                </Menu.Item>
-
-                <Menu.Item
-                  name="messages"
-                  active={activeItem === "messages"}
-                  onClick={this.handleItemClick}
-                >
-                  <Link to="/myconvos">Messages</Link>
-                  <Switch>
-                    <Route
-                      path="/myconvos"
-                      render={routeProps => (
+                <React.Fragment>
+                  <Menu.Item
+                    name="home"
+                    active={activeItem === "home"}
+                    onClick={this.handleItemClick}
+                  >
+                    <Link to="/"> CoronaCare</Link>
+                  </Menu.Item>
+                </React.Fragment>
+                <React.Fragment>
+                  <Menu.Item
+                    name="messages"
+                    active={activeItem === "messages"}
+                    onClick={this.handleItemClick}
+                    as={Link}
+                    to="/myconvos"
+                  >
+                    <Route exact path="/myconvos">
+                      <Messages user={this.props.user} />
+                    </Route>
+                    Messages
+                  </Menu.Item>
+                  {/* render={routeProps => (
                         <Messages {...routeProps} user={this.props.user} />
-                      )}
-                    />
-                  </Switch>
-                </Menu.Item>
+                      )} */}
+                  {/* /> */}
+
+                  {/* </Menu.Item> */}
+                </React.Fragment>
 
                 <Menu.Menu position="right">
                   <Menu.Item>
                     <Input icon="search" placeholder="Search..." />
                   </Menu.Item>
-                  <Menu.Item
-                    name="Logout"
-                    active={activeItem === "Logout"}
-                    onClick={this.handleItemClick}
-                    // onClick={this.props.signOut}
-                  ></Menu.Item>
+                  <React.Fragment>
+                    <Menu.Item
+                      name="Logout"
+                      active={activeItem === "Logout"}
+                      onClick={this.handleItemClick}
+                      // onClick={this.props.signOut}
+                    ></Menu.Item>
+                  </React.Fragment>
                 </Menu.Menu>
               </Menu>
             </nav>

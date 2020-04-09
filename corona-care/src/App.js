@@ -13,7 +13,7 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
-import { Input, Menu } from "semantic-ui-react";
+import { Input, Menu, Image } from "semantic-ui-react";
 
 // import "semantic-ui-css/semantic.min.css";
 
@@ -98,19 +98,29 @@ class App extends Component {
 
   homePageNav = () => {
     return (
-      <Menu.Item
-        name="home"
-        // active={activeItem === "home"}
-        onClick={this.handleItemClick}
-      >
-        <Link to="/"> CoronaCare</Link>
-      </Menu.Item>
+      <div>
+        <Link to="/">
+          <Image
+            size="small"
+            src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
+            fluid
+          ></Image>
+        </Link>
+
+        <Menu.Item
+          name="home"
+          // active={activeItem === "home"}
+          onClick={this.handleItemClick}
+        >
+          <Link to="/"> CoronaCare</Link>
+        </Menu.Item>
+      </div>
     );
   };
   homePageSearch = () => {
     return (
       <Menu.Menu>
-        <Menu.Item position="right">
+        <Menu.Item fixed="right">
           <Input icon="search" placeholder="Search Titles or Descriptions" />
         </Menu.Item>
       </Menu.Menu>
@@ -160,17 +170,20 @@ class App extends Component {
                 <Messages user={this.state.user} />
                 Messages
               </Menu.Item>
-              {this.homePageSearch()}
             </React.Fragment>
 
             <React.Fragment>
-              <Menu.Item
-                position="right"
-                name="Logout"
-                active={activeItem === "Logout"}
-                onClick={this.handleItemClick}
-                // onClick={this.signOut}
-              ></Menu.Item>
+              <Menu.Menu position="right">
+                <Menu.Item>{this.homePageSearch()}</Menu.Item>
+
+                <Menu.Item
+                  position="right"
+                  name="Logout"
+                  active={activeItem === "Logout"}
+                  onClick={this.handleItemClick}
+                  // onClick={this.signOut}
+                ></Menu.Item>
+              </Menu.Menu>
             </React.Fragment>
           </Menu>
 
@@ -197,8 +210,9 @@ class App extends Component {
         <Menu.Menu position="right">
           <Menu.Item> */}
               {this.homePageNav()}
-              {this.homePageSearch()}
+
               <Menu.Menu position="right">
+                <Menu.Item>{this.homePageSearch()}</Menu.Item>
                 <Menu.Item
                   name="Log In"
                   active={activeItem === "Log In"}

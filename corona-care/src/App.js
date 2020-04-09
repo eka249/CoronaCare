@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Button } from "react";
 import List from "./List";
 import NewRequestModal from "./NewRequestModal";
 import SignInModal from "./SignInModal";
@@ -39,16 +39,16 @@ class App extends Component {
   };
 
   changeLogInState = () => {
-    {
-      this.setState({
-        ...this.state,
-        showSignInModal: !this.state.showSignInModal
-      });
-    }
+    console.log("change log in state reached");
+    this.setState({
+      ...this.state,
+      showSignInModal: !this.state.showSignInModal
+    });
   };
 
-  handleNewRequest = (e, { name }) => {
-    this.setState({ activeItem: name, showNewModal: !this.state.showNewModal });
+  handleNewRequest = e => {
+    console.log("hit new reqeust handle");
+    this.setState({ showNewRequestModal: !this.state.showNewRequestModal });
   };
 
   handleClickSignIn = response => {
@@ -98,23 +98,33 @@ class App extends Component {
 
   homePageNav = () => {
     return (
-      <div>
-        <Link to="/">
-          <Image
-            size="small"
-            src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
-            fluid
-          ></Image>
-        </Link>
+      <React.Fragment>
+        <div>
+          <Link to="/">
+            <Image
+              size="small"
+              src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
+              fluid
+            ></Image>
+          </Link>
 
-        <Menu.Item
-          name="home"
-          // active={activeItem === "home"}
-          onClick={this.handleItemClick}
-        >
-          <Link to="/"> CoronaCare</Link>
+          <Menu.Item
+            name="home"
+            // active={activeItem === "home"}
+            onClick={this.handleItemClick}
+          >
+            <Link to="/"> CoronaCare</Link>
+          </Menu.Item>
+        </div>
+        <Menu.Item onClick={this.handleItemClick}>
+          <NewRequestModal
+            user={this.state.user}
+            logged_in={this.state.logged_in}
+            getRequests={this.getRequests}
+            changeLogInState={this.changeLogInState}
+          />
         </Menu.Item>
-      </div>
+      </React.Fragment>
     );
   };
   homePageSearch = () => {
@@ -130,13 +140,14 @@ class App extends Component {
   homePage = () => {
     return (
       <div>
-        {this.state.showNewRequestModal ? (
+        {/* <Button onClick={this.handleNewRequest}>Create a Request</Button> */}
+        {/* {this.state.showNewRequestModal ? (
           <NewRequestModal
             user={this.state.user}
             logged_in={this.state.logged_in}
             getRequests={this.getRequests}
           />
-        ) : null}
+        ) : null} */}
 
         {this.state.showSignInModal ? (
           <SignInModal handleClickSignIn={this.handleClickSignIn} />
@@ -200,15 +211,6 @@ class App extends Component {
         <Router>
           <nav>
             <Menu>
-              {/* <Menu.Item
-          name="home"
-          // active={activeItem === "home"}
-          onClick={this.handleItemClick}
-        >
-          <Link to="/"> CoronaCare</Link>
-        </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item> */}
               {this.homePageNav()}
 
               <Menu.Menu position="right">
@@ -235,21 +237,6 @@ class App extends Component {
         </Router>
       </div>
     );
-
-    //     return(
-    //       <div>
-    //    <NewRequestModal
-    //     user={this.state.user}
-    //     logged_in={this.state.logged_in}
-    //     getRequests={this.getRequests}
-    //   />
-    // <h2>Please help support your local Wichita community.</h2>
-    // <List requests={this.state.requests} user={this.state.user} />
-    //   {this.state.showSignInModal ? (
-    //     <SignInModal handleClickSignIn={this.handleClickSignIn} />
-    //   ) : null}
-    //   </div>
-    //     )
   }
 }
 

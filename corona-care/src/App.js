@@ -98,20 +98,22 @@ class App extends Component {
 
   homePageNav = () => {
     return (
-      <div>
-        <Menu.Item
-          name="home"
-          // active={activeItem === "home"}
-          onClick={this.handleItemClick}
-        >
-          <Link to="/"> CoronaCare</Link>
+      <Menu.Item
+        name="home"
+        // active={activeItem === "home"}
+        onClick={this.handleItemClick}
+      >
+        <Link to="/"> CoronaCare</Link>
+      </Menu.Item>
+    );
+  };
+  homePageSearch = () => {
+    return (
+      <Menu.Menu>
+        <Menu.Item position="right">
+          <Input icon="search" placeholder="Search Titles or Descriptions" />
         </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Input icon="search" placeholder="Search..." />
-          </Menu.Item>
-        </Menu.Menu>
-      </div>
+      </Menu.Menu>
     );
   };
 
@@ -119,12 +121,19 @@ class App extends Component {
     return (
       <div>
         {this.state.showNewRequestModal ? (
-          <NewRequestModal user={this.state.user} />
+          <NewRequestModal
+            user={this.state.user}
+            logged_in={this.state.logged_in}
+            getRequests={this.getRequests}
+          />
         ) : null}
 
         {this.state.showSignInModal ? (
           <SignInModal handleClickSignIn={this.handleClickSignIn} />
         ) : null}
+
+        <h2>Please help support your local Wichita community.</h2>
+        <List requests={this.state.requests} user={this.state.user} />
       </div>
     );
   };
@@ -136,78 +145,80 @@ class App extends Component {
     //   this.homePage())
 
     return this.state.logged_in ? (
-      <Router>
+      <div>
+        <Router>
+          <Menu>
+            <React.Fragment>
+              {this.homePageNav()}
+              <Menu.Item
+                name="messages"
+                active={activeItem === "messages"}
+                onClick={this.handleItemClick}
+                as={Link}
+                to="/myconvos"
+              >
+                <Messages user={this.state.user} />
+                Messages
+              </Menu.Item>
+              {this.homePageSearch()}
+            </React.Fragment>
+
+            <React.Fragment>
+              <Menu.Item
+                position="right"
+                name="Logout"
+                active={activeItem === "Logout"}
+                onClick={this.handleItemClick}
+                // onClick={this.signOut}
+              ></Menu.Item>
+            </React.Fragment>
+          </Menu>
+
+          <React.Fragment>
+            <Route exact path="/myconvos">
+              {/* <Messages user={this.state.user} /> */}
+            </Route>
+          </React.Fragment>
+        </Router>
         {this.homePage()}
-        <Menu>
-          <React.Fragment>
-            {/* <Menu.Item
-                  name="home"
-                  active={activeItem === "home"}
-                  onClick={this.handleItemClick}
-                >
-                  <Link to="/"> CoronaCare</Link>
-                </Menu.Item> */}
-            {this.homePageNav()}
-            <Menu.Item
-              name="messages"
-              active={activeItem === "messages"}
-              onClick={this.handleItemClick}
-              as={Link}
-              to="/myconvos"
-            >
-              <Messages user={this.state.user} />
-              Messages
-            </Menu.Item>
-          </React.Fragment>
-
-          <React.Fragment>
-            <Menu.Item
-              name="Logout"
-              active={activeItem === "Logout"}
-              onClick={this.handleItemClick}
-              // onClick={this.signOut}
-            ></Menu.Item>
-          </React.Fragment>
-        </Menu>
-
-        <React.Fragment>
-          <Route exact path="/myconvos">
-            {/* <Messages user={this.state.user} /> */}
-          </Route>
-        </React.Fragment>
-        {/* <NewRequestModal
-              user={this.state.user}
-              logged_in={this.state.logged_in}
-              getRequests={this.getRequests}
-            /> */}
-        {/* <h2>Please help support your local Wichita community.</h2>
-            <List requests={this.state.requests} user={this.state.user} /> */}
-      </Router>
+      </div>
     ) : (
       <div>
-        {this.homePage()}
-        <nav>
-          <Menu>
-            {this.homePageNav()}
-            <Menu.Menu position="right">
-              <Menu.Item
-                name="Log In"
-                active={activeItem === "Log In"}
-                onClick={this.changeLogInState}
-              ></Menu.Item>
-            </Menu.Menu>
-          </Menu>
-        </nav>
-        {/* <NewRequestModal
+        <Router>
+          <nav>
+            <Menu>
+              {/* <Menu.Item
+          name="home"
+          // active={activeItem === "home"}
+          onClick={this.handleItemClick}
+        >
+          <Link to="/"> CoronaCare</Link>
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item> */}
+              {this.homePageNav()}
+              {this.homePageSearch()}
+              <Menu.Menu position="right">
+                <Menu.Item
+                  name="Log In"
+                  active={activeItem === "Log In"}
+                  onClick={this.changeLogInState}
+                ></Menu.Item>
+              </Menu.Menu>
+            </Menu>
+          </nav>
+          {/* <NewRequestModal
             user={this.state.user}
             logged_in={this.state.logged_in}
             getRequests={this.getRequests}
           />
           <h2>Please help support your local Wichita community.</h2>
           <List requests={this.state.requests} user={this.state.user} /> */}
-        {/* {this.state.showSignInModal ? (
+          {/* {this.state.showSignInModal ? (
             <SignInModal handleClickSignIn={this.handleClickSignIn} />
           ) : null} */}
+        </Router>
+        {this.homePage()}
       </div>
     );
 

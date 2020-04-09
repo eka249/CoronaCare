@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
     def create
         @request = Request.create([request_params])
         if @request.save
-            render json: @request, status: :created, location: @task
+            render json: @request, status: :created
         else render json: @request.errors
         end
 

@@ -7,5 +7,16 @@ class ConvosController < ApplicationController
         render json: @convos
     end
 
+    def create
+        @convo = Convo.create([convo_params])
+            render json: @convo
+        
+    end
+
+        private
+
+        def convo_params
+            params.require(:convo).permit(:fromID, :toID)
+        end
 
 end

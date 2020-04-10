@@ -6,10 +6,10 @@ class RequestsController < ApplicationController
 
     def create
         @request = Request.create([request_params])
-        if @request.save
+        # if @request.save
             render json: @request, status: :created
-        else render json: @request.errors
-        end
+        # else render json: @request.errors
+        # end
 
     end
 

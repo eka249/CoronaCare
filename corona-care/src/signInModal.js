@@ -17,16 +17,12 @@ class SignInModal extends Component {
     let inputVal = e.target.name;
     this.setState({ ...this.state, [inputVal]: e.target.value });
   };
-  sendToLogIn = response => {
-    console.log("response at sendtologin", response);
-    if (response.jwt) {
-      localStorage.setItem("token", response.jwt);
-      this.props.handleClickSignIn(response);
-    }
-  };
 
   handleSignIn = e => {
-    // e.preventDefault();
+    this.setState({
+      ...this.state,
+      open: false
+    });
     //routes to auth#create on backend to recieve token
     fetch("http://localhost:3000/auth", {
       method: "POST",
@@ -41,22 +37,21 @@ class SignInModal extends Component {
       })
     })
       .then(response => response.json())
-      // .then(response => {
-      //   if (response.jwt) {
-      //     localStorage.setItem("token", response.jwt);
-      //   }
-      // })
-      // .then(response => console.log("sign in response", response))
-      .then(response => this.sendToLogIn(response));
-    // .then(response => console.log("jwt from response", response.jwt));
-    // .then(response => console.log("user from response", response.user))
+      .then(response => {
+        if (response.jwt) {
+          localStorage.setItem("token", response.jwt);
+          // this.props.handleUserState(response);
+          this.props.handleClickSignIn(response);
+        }
+      });
   };
 
   handleSignUp = () => {
     this.setState({
       ...this.state,
       password: this.state.newPassword,
-      username: this.state.newUsername
+      username: this.state.newUsername,
+      open: false
     });
     fetch("http://localhost:3000/users", {
       method: "POST",

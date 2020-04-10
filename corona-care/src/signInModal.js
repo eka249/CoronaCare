@@ -18,6 +18,7 @@ class SignInModal extends Component {
     this.setState({ ...this.state, [inputVal]: e.target.value });
   };
   sendToLogIn = response => {
+    console.log("response at sendtologin", response);
     if (response.jwt) {
       localStorage.setItem("token", response.jwt);
       this.props.handleClickSignIn(response);
@@ -45,15 +46,18 @@ class SignInModal extends Component {
       //     localStorage.setItem("token", response.jwt);
       //   }
       // })
-      .then(response =>
-        // console.log(response));
-        this.sendToLogIn(response)
-      );
+      // .then(response => console.log("sign in response", response))
+      .then(response => this.sendToLogIn(response));
     // .then(response => console.log("jwt from response", response.jwt));
     // .then(response => console.log("user from response", response.user))
   };
 
   handleSignUp = () => {
+    this.setState({
+      ...this.state,
+      password: this.state.newPassword,
+      username: this.state.newUsername
+    });
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -71,7 +75,7 @@ class SignInModal extends Component {
       })
     })
       .then(response => response.json())
-      .then(() => this.props.handleClickSignIn());
+      .then(this.handleSignIn);
   };
 
   render() {

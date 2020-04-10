@@ -39,7 +39,6 @@ class App extends Component {
   };
 
   changeLogInState = () => {
-    console.log("change log in state reached");
     this.setState({
       ...this.state,
       showSignInModal: !this.state.showSignInModal
@@ -47,37 +46,28 @@ class App extends Component {
   };
 
   handleNewRequest = e => {
-    console.log("hit new reqeust handle");
     this.setState({ showNewRequestModal: !this.state.showNewRequestModal });
   };
 
   handleClickSignIn = response => {
-    this.getLoggedIn(response);
-    {
-      this.setState({
-        ...this.state,
-        showSignInModal: !this.state.showSignInModal
-      });
-    }
-  };
-
-  getLoggedIn = response => {
     this.setState({
       ...this.state,
+      showSignInModal: !this.state.showSignInModal,
       logged_in: true,
       user: response.user
     });
-    // fetch("http://localhost:3000/user/profile",{
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accepts: "application/json",
-    //     Authorization: `Bearer ${localStorage.token}`
-    //   },
-
-    // })
-    // .then(response=>response.json())
   };
+  // fetch("http://localhost:3000/user/profile",{
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accepts: "application/json",
+  //     Authorization: `Bearer ${localStorage.token}`
+  //   },
+
+  // })
+  // .then(response=>response.json())
+
   signOut = () => {
     localStorage.removeItem("token");
     this.setState({ ...this.state, logged_in: false, user: null });
@@ -139,7 +129,7 @@ class App extends Component {
 
   homePage = () => {
     return (
-      <div>
+      <React.Fragment>
         {/* <Button onClick={this.handleNewRequest}>Create a Request</Button> */}
         {/* {this.state.showNewRequestModal ? (
           <NewRequestModal
@@ -155,7 +145,7 @@ class App extends Component {
 
         <h3>Please help support your local Wichita community</h3>
         <List requests={this.state.requests} user={this.state.user} />
-      </div>
+      </React.Fragment>
     );
   };
 
@@ -165,78 +155,75 @@ class App extends Component {
     //  return (this.homePageNav()
     //   this.homePage())
 
-    return this.state.logged_in ? (
-      <div>
-        <Router>
-          <Menu>
-            <React.Fragment>
-              {this.homePageNav()}
-              <Menu.Item
-                name="messages"
-                active={activeItem === "messages"}
-                onClick={this.handleItemClick}
-                as={Link}
-                to="/myconvos"
-              >
-                <Messages user={this.state.user} />
-                Messages
-              </Menu.Item>
-            </React.Fragment>
-
-            <React.Fragment>
-              <Menu.Menu position="right">
-                <Menu.Item>{this.homePageSearch()}</Menu.Item>
-
-                <Menu.Item
-                  position="right"
-                  name="Logout"
-                  active={activeItem === "Logout"}
-                  onClick={this.handleItemClick}
-                  onClick={this.signOut}
-                ></Menu.Item>
-              </Menu.Menu>
-            </React.Fragment>
-          </Menu>
-
+    if (this.state.logged_in) {
+      return (
+        <React.Fragment>
           <React.Fragment>
-            <Route exact path="/myconvos">
-              {/* <Messages user={this.state.user} /> */}
-            </Route>
-          </React.Fragment>
-        </Router>
-        {this.homePage()}
-      </div>
-    ) : (
-      <div>
-        <Router>
-          <nav>
-            <Menu>
-              {this.homePageNav()}
+            <Router>
+              <Menu>
+                <React.Fragment>
+                  {this.homePageNav()}
+                  <Menu.Item
+                    name="messages"
+                    active={activeItem === "messages"}
+                    onClick={this.handleItemClick}
+                    as={Link}
+                    to="/myconvos"
+                  >
+                    Messages
+                  </Menu.Item>
+                </React.Fragment>
 
-              <Menu.Menu position="right">
-                <Menu.Item>{this.homePageSearch()}</Menu.Item>
-                <Menu.Item
-                  name="Log In"
-                  active={activeItem === "Log In"}
-                  onClick={this.changeLogInState}
-                ></Menu.Item>
-              </Menu.Menu>
-            </Menu>
-          </nav>
-          {/* <NewRequestModal
-            user={this.state.user}
-            logged_in={this.state.logged_in}
-            getRequests={this.getRequests}
-          />
-          <h2>Please help support your local Wichita community.</h2>
-          <List requests={this.state.requests} user={this.state.user} /> */}
-          {/* {this.state.showSignInModal ? (
-            <SignInModal handleClickSignIn={this.handleClickSignIn} />
-          ) : null} */}
-          {this.homePage()}
-        </Router>
-      </div>
-    );
+                {/* <Messages user={this.state.user} /> */}
+
+                <React.Fragment>
+                  <Menu.Menu position="right">
+                    <Menu.Item>{this.homePageSearch()}</Menu.Item>
+
+                    <Menu.Item
+                      position="right"
+                      name="Logout"
+                      active={activeItem === "Logout"}
+                      onClick={this.handleItemClick}
+                      onClick={this.signOut}
+                    ></Menu.Item>
+                  </Menu.Menu>
+                </React.Fragment>
+              </Menu>
+
+              <Route exact path="/myconvos">
+                {/* <Messages user={this.state.user} /> */}
+              </Route>
+              {this.homePage()}
+              <Route exact path="/myconvos" component={Messages}></Route>
+            </Router>
+          </React.Fragment>
+        </React.Fragment>
+      );
+    } else
+      return (
+        <div>
+          <Router>
+            <nav>
+              <Menu>
+                {this.homePageNav()}
+
+                <Menu.Menu position="right">
+                  <Menu.Item>{this.homePageSearch()}</Menu.Item>
+                  <Menu.Item
+                    name="Log In"
+                    active={activeItem === "Log In"}
+                    onClick={this.changeLogInState}
+                  ></Menu.Item>
+                </Menu.Menu>
+              </Menu>
+            </nav>
+            {this.homePage()}
+          </Router>
+        </div>
+      );
+
+    // return (<Route exact path="/myconvos" component={Messages}></Route>)
   }
 }
 

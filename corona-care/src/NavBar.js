@@ -68,7 +68,8 @@ class NavBar extends Component {
           <Link to="/">
             <Image
               size="small"
-              src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
+              //   src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
+              src="https://cdn.pixabay.com/photo/2019/10/22/13/23/keeper-of-the-plains-4568727_960_720.jpg"
               fluid
             ></Image>
           </Link>

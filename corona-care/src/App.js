@@ -2,17 +2,16 @@ import React, { Component, Button } from "react";
 import List from "./List";
 import NewRequestModal from "./NewRequestModal";
 import SignInModal from "./SignInModal";
-
-// import NavBar from "./NavBar";
-import Messages from "./Messages";
-import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
+  Switch,
   Link,
   NavLink
 } from "react-router-dom";
+// import NavBar from "./NavBar";
+import Messages from "./Messages";
+import ReactDOM from "react-dom";
 import { Input, Menu, Image } from "semantic-ui-react";
 
 // import "semantic-ui-css/semantic.min.css";
@@ -152,52 +151,45 @@ class App extends Component {
   render() {
     const { activeItem } = this.state;
 
-    //  return (this.homePageNav()
-    //   this.homePage())
-
     if (this.state.logged_in) {
       return (
         <React.Fragment>
-          <React.Fragment>
-            <Router>
-              <Menu>
-                <React.Fragment>
-                  {this.homePageNav()}
+          <Router>
+            <Router></Router>
+            <Menu>
+              {this.homePageNav()}
+              <Menu.Item
+                name="messages"
+                active={activeItem === "messages"}
+                onClick={this.handleItemClick}
+                as={Link}
+                to="/myconvos"
+              >
+                Messages
+              </Menu.Item>
+              <Route
+                exact
+                path="/myconvos"
+                render={routerProps => {
+                  return <Messages {...routerProps} user={this.state.user} />;
+                }}
+              />
+              <React.Fragment>
+                <Menu.Menu position="right">
+                  <Menu.Item>{this.homePageSearch()}</Menu.Item>
+
                   <Menu.Item
-                    name="messages"
-                    active={activeItem === "messages"}
+                    position="right"
+                    name="Logout"
+                    active={activeItem === "Logout"}
                     onClick={this.handleItemClick}
-                    as={Link}
-                    to="/myconvos"
-                  >
-                    Messages
-                  </Menu.Item>
-                </React.Fragment>
-
-                {/* <Messages user={this.state.user} /> */}
-
-                <React.Fragment>
-                  <Menu.Menu position="right">
-                    <Menu.Item>{this.homePageSearch()}</Menu.Item>
-
-                    <Menu.Item
-                      position="right"
-                      name="Logout"
-                      active={activeItem === "Logout"}
-                      onClick={this.handleItemClick}
-                      onClick={this.signOut}
-                    ></Menu.Item>
-                  </Menu.Menu>
-                </React.Fragment>
-              </Menu>
-
-              <Route exact path="/myconvos">
-                {/* <Messages user={this.state.user} /> */}
-              </Route>
-              {this.homePage()}
-              <Route exact path="/myconvos" component={Messages}></Route>
-            </Router>
-          </React.Fragment>
+                    onClick={this.signOut}
+                  ></Menu.Item>
+                </Menu.Menu>
+              </React.Fragment>
+            </Menu>
+            {this.homePage()}
+          </Router>
         </React.Fragment>
       );
     } else
@@ -222,8 +214,6 @@ class App extends Component {
           </Router>
         </div>
       );
-
-    // return (<Route exact path="/myconvos" component={Messages}></Route>)
   }
 }
 

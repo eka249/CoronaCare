@@ -134,7 +134,15 @@ class NavBar extends Component {
       return (
         <React.Fragment>
           <Router>
-            <Router></Router>
+            {" "}
+            <Route
+              name="my convos router"
+              exact
+              path="/myconvos"
+              render={routerProps => {
+                return <Messages {...routerProps} user={this.props.user} />;
+              }}
+            />
             <Menu>
               {this.homePageNav()}
               <Menu.Item
@@ -146,13 +154,13 @@ class NavBar extends Component {
               >
                 Messages
               </Menu.Item>
-              <Route
+              {/* <Route
                 exact
                 path="/myconvos"
                 render={routerProps => {
                   return <Messages {...routerProps} user={this.props.user} />;
                 }}
-              />
+              /> */}
               <React.Fragment>
                 <Menu.Menu position="right">
                   <Menu.Item>{this.homePageSearch()}</Menu.Item>

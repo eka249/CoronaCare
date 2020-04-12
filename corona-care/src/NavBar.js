@@ -22,8 +22,8 @@ class NavBar extends Component {
     this.state = {
       activeItem: "home",
       showNewModal: false,
-      showSignInModal: false,
-      showNewRequestModal: false
+      showNewRequestModal: false,
+      showSignInModal: false
     };
   }
 
@@ -52,10 +52,23 @@ class NavBar extends Component {
     this.props.handleUserState(response);
   };
 
-  //   signOut = () => {
-  //     localStorage.removeItem("token");
-  //     this.setState({ ...this.state, logged_in: false, user: null });
+  handleRedirectHome = () => {
+    this.props.redirectHome("home");
+    // this.setState({ activeItem: name });
+  };
+  handleRedirectMessages = () => {
+    console.log("hit handleredirectmessages in navbar");
+    this.props.redirectMessages("myconvos");
+    // this.setState({ activeItem: name });
+  };
+  //   handleRedirectProfile = () => {
+  //     this.props.handleRedirect("myprofile");
+  //     // this.setState({ activeItem: name });
   //   };
+
+  handleLinkHome = e => {
+    this.props.redirectHome(e.target.name);
+  };
 
   triggerGetRequests = () => {
     this.props.getRequests();
@@ -67,6 +80,8 @@ class NavBar extends Component {
         <div>
           <Link to="/">
             <Image
+              name="home"
+              onClick={this.handleLinkHome}
               size="small"
               //   src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
               src="https://cdn.pixabay.com/photo/2019/10/22/13/23/keeper-of-the-plains-4568727_960_720.jpg"
@@ -74,11 +89,7 @@ class NavBar extends Component {
             ></Image>
           </Link>
 
-          <Menu.Item
-            name="home"
-            // active={activeItem === "home"}
-            onClick={this.handleItemClick}
-          >
+          <Menu.Item name="home" onClick={this.handleRedirectHome}>
             <Link to="/"> CoronaCare</Link>
           </Menu.Item>
         </div>
@@ -88,14 +99,43 @@ class NavBar extends Component {
             logged_in={this.props.logged_in}
             getRequests={this.props.getRequests}
             showLogInModal={this.showLogInModal}
+            // triggerGetRequests=
           />
         </Menu.Item>
       </React.Fragment>
     );
   };
-  homePageSearch = () => {
+
+  navBarMessages = () => {
+    const { activeItem } = this.state;
+
     return (
-      <Menu.Menu>
+      <React.Fragment>
+        <Menu.Item
+          name="messages"
+          active={activeItem === "messages"}
+          onClick={this.handleRedirectMessages}
+          as={Link}
+          to="/myconvos"
+        >
+          Messages
+        </Menu.Item>
+        {/* <Switch>
+          <Route
+            exact
+            path="/myconvos"
+            render={routerProps => {
+              return <Messages {...routerProps} user={this.props.user} />;
+            }}
+          ></Route>
+        </Switch> */}
+      </React.Fragment>
+    );
+  };
+
+  navSearch = () => {
+    return (
+      <Menu.Menu position="right">
         <Menu.Item fixed="right">
           <Input icon="search" placeholder="Search Titles or Descriptions" />
         </Menu.Item>
@@ -103,81 +143,65 @@ class NavBar extends Component {
     );
   };
 
-  homePage = () => {
+  navLogOut = () => {
+    const { activeItem } = this.state;
+
     return (
-      <React.Fragment>
-        {/* <Button onClick={this.handleNewRequest}>Create a Request</Button> */}
-        {/* {this.state.showNewRequestModal ? (
-          <NewRequestModal
-            user={this.state.user}
-            logged_in={this.state.logged_in}
-            getRequests={this.getRequests}
-          />
-        ) : null} */}
+      <Menu.Menu position="right">
+        <Menu.Item
+          position="right"
+          active={activeItem === "Logout"}
+          onClick={this.handleItemClick}
+          //   onClick={this.props.signOut()}
+        >
+          Log Out
+        </Menu.Item>
+      </Menu.Menu>
+    );
+  };
+  navLogIn = () => {
+    const { activeItem } = this.state;
 
-        {this.state.showSignInModal ? (
-          <SignInModal
-            handleClickSignIn={this.handleClickSignIn}
-            handleUserState={this.props.handleUserState}
-          />
-        ) : null}
-
-        <h3>Please help support your local Wichita community</h3>
-        <List requests={this.props.requests} user={this.props.user} />
-      </React.Fragment>
+    return (
+      <Menu.Item
+        name="Log In"
+        active={activeItem === "Log In"}
+        onClick={this.showLogInModal}
+      ></Menu.Item>
     );
   };
 
   render() {
     const { activeItem } = this.state;
+    if (this.state.showSignInModal) {
+      return (
+        <SignInModal
+          handleClickSignIn={this.handleClickSignIn}
+          handleUserState={this.handleUserState}
+        />
+      );
+    }
 
     if (this.props.logged_in) {
       return (
         <React.Fragment>
-          <Router>
-            {" "}
+          <Menu>
+            {this.homePageNav()}
+            {this.navBarMessages()}
+            {/* {this.navBarProfile()} */}
+            {this.navSearch()}
+            {this.navLogOut()}
+          </Menu>
+          {/* {this.homePage()} */}
+          {/* <Switch>
             <Route
-              name="my convos router"
               exact
-              path="/myconvos"
+              path="/messages"
               render={routerProps => {
                 return <Messages {...routerProps} user={this.props.user} />;
               }}
             />
-            <Menu>
-              {this.homePageNav()}
-              <Menu.Item
-                name="messages"
-                active={activeItem === "messages"}
-                onClick={this.handleItemClick}
-                as={Link}
-                to="/myconvos"
-              >
-                Messages
-              </Menu.Item>
-              {/* <Route
-                exact
-                path="/myconvos"
-                render={routerProps => {
-                  return <Messages {...routerProps} user={this.props.user} />;
-                }}
-              /> */}
-              <React.Fragment>
-                <Menu.Menu position="right">
-                  <Menu.Item>{this.homePageSearch()}</Menu.Item>
-
-                  <Menu.Item
-                    position="right"
-                    name="Logout"
-                    active={activeItem === "Logout"}
-                    onClick={this.handleItemClick}
-                    // onClick={this.props.signOut()}
-                  ></Menu.Item>
-                </Menu.Menu>
-              </React.Fragment>
-            </Menu>
-            {this.homePage()}
-          </Router>
+          </Switch> */}
         </React.Fragment>
       );
     } else
@@ -187,18 +211,11 @@ class NavBar extends Component {
             <nav>
               <Menu>
                 {this.homePageNav()}
-
-                <Menu.Menu position="right">
-                  <Menu.Item>{this.homePageSearch()}</Menu.Item>
-                  <Menu.Item
-                    name="Log In"
-                    active={activeItem === "Log In"}
-                    onClick={this.showLogInModal}
-                  ></Menu.Item>
-                </Menu.Menu>
+                {this.navSearch()}
+                {this.navLogIn()}
               </Menu>
             </nav>
-            {this.homePage()}
+            {/* {this.homePage()} */}
           </Router>
         </div>
       );

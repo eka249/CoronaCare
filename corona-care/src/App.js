@@ -80,7 +80,10 @@ class App extends Component {
       logged_in: true,
       user: response.user
     });
-    console.log("this.state.user.convos", this.state.user.conversations);
+    // console.log(
+    //   "this.state.user.convos in app through user",
+    //   this.state.user.conversations
+    // );
     // console.log(
     //   "hit handleusersteate in app",
     //   response,

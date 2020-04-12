@@ -57,7 +57,6 @@ class NavBar extends Component {
     // this.setState({ activeItem: name });
   };
   handleRedirectMessages = () => {
-    console.log("hit handleredirectmessages in navbar");
     this.props.redirectMessages("myconvos");
     // this.setState({ activeItem: name });
   };
@@ -89,8 +88,13 @@ class NavBar extends Component {
             ></Image>
           </Link>
 
-          <Menu.Item name="home" onClick={this.handleRedirectHome}>
-            <Link to="/"> CoronaCare</Link>
+          <Menu.Item
+            name="home"
+            onClick={this.handleRedirectHome}
+            as={Link}
+            to="/"
+          >
+            CoronaCare
           </Menu.Item>
         </div>
         <Menu.Item onClick={this.handleItemClick}>

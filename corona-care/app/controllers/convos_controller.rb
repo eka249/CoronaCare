@@ -2,15 +2,17 @@ class ConvosController < ApplicationController
 
     def myconvos
         # render json: {user: ConvoSerializer.new(current_user)}, status: :accepted
-        @convos = Convo.find(:user_id === :from_ID || :user_id === :to_ID)
-        puts @convos
+        puts "params[:id]"
+        puts params[:id]
+        @convos = Convo.where(fromID: params[:id]).or(Convo.where(toID: params[:id]))
         render json: @convos
+        puts "myconvos below"
+        puts @convos
     end
 
     def create
         @convo = Convo.create([convo_params])
             render json: @convo
-        
     end
 
         private

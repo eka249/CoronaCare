@@ -7,15 +7,17 @@ class List extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.props.requests.map((request, index) => {
-          return (
-            <Listing key={index} request={request} user={this.props.user} />
-          );
-        })}
-      </div>
-    );
+    if (this.props.requests != null) {
+      return (
+        <div>
+          {this.props.requests.map((request, index) => {
+            return (
+              <Listing key={index} request={request} user={this.props.user} />
+            );
+          })}
+        </div>
+      );
+    } else return null;
   }
 }
 export default List;

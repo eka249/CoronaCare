@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
+
     def index
+        puts "puts: began requests "
         @requests = Request.all
         render json: @requests
     end
@@ -8,6 +10,7 @@ class RequestsController < ApplicationController
         @request = Request.create([request_params])
         # if @request.save
             render json: @request, status: :created
+           
         # else render json: @request.errors
         # end
 

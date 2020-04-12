@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :convos
   resources :users
   post '/auth', to: 'auth#create'
-  get '/myconvos', to: 'convos#myconvos'
+  post '/myconvos', to: 'convos#myconvos'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

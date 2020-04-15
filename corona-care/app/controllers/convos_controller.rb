@@ -1,6 +1,6 @@
 class ConvosController < ApplicationController
 
-    def myconvos
+    def show
         # render json: {user: ConvoSerializer.new(current_user)}, status: :accepted
         puts "params[:id]"
         puts params[:id]

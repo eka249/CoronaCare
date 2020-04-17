@@ -153,11 +153,11 @@ class App extends Component {
     console.log("profile work here");
   };
 
-  // signOut = () => {
-  //   console.log("hit sign out in app");
-  //   localStorage.removeItem("token");
-  //   this.setState({ ...this.state, logged_in: false, user: null });
-  // };
+  signOut = () => {
+    console.log("hit sign out in app");
+    localStorage.removeItem("token");
+    this.setState({ ...this.state, logged_in: false, user: null });
+  };
 
   navBar = () => {
     return (
@@ -189,7 +189,6 @@ class App extends Component {
       return (
         <React.Fragment>
           {this.navBar()}
-          {this.filteredRequests()}
           {this.showMessages()}
         </React.Fragment>
       );
@@ -197,7 +196,6 @@ class App extends Component {
       return (
         <React.Fragment>
           {this.navBar()}
-          {this.filteredRequests()}
           {this.showProfile()}
         </React.Fragment>
       );

@@ -146,7 +146,7 @@ class NavBar extends Component {
           position="right"
           active={activeItem === "Logout"}
           onClick={this.handleItemClick}
-          //   onClick={this.props.signOut()}
+          onClick={this.props.signOut}
         >
           Log Out
         </Menu.Item>

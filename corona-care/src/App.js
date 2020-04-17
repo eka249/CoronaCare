@@ -71,9 +71,6 @@ class App extends Component {
       </Menu.Menu>
     );
   };
-  ///////////
-  filteredRequests = () => {};
-  ////////////////////////
 
   getRequests = () => {
     fetch("http://localhost:3000/requests", {
@@ -121,7 +118,7 @@ class App extends Component {
 
       return (
         <React.Fragment>
-          <h3>Please help support your local Wichita community</h3>)
+          <h3>Please help support your local Wichita community</h3>
           <List requests={filtered} user={this.state.user} />
         </React.Fragment>
       );

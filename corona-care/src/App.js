@@ -11,12 +11,14 @@ class App extends Component {
     super();
 
     this.state = {
-      requests: null,
+      allRequests: null,
       logged_in: false,
       user: null,
       myconvos: false,
       myprofile: false,
-      home: true
+      home: true,
+      filteredRequests: null,
+      searchInput: null
     };
     this.getRequests();
   }
@@ -41,7 +43,7 @@ class App extends Component {
     //needed an extra function because .then() was exceeding in componentDidMount
     this.setState({
       ...this.state,
-      requests: data
+      allRequests: data
     });
   };
   showLogInModal = () => {
@@ -51,6 +53,27 @@ class App extends Component {
       showSignInModal: true
     });
   };
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  searchNav = () => {
+    return (
+      <Menu.Menu position="right">
+        <Menu.Item fixed="right">
+          <Input
+            name="searchInput"
+            icon="search"
+            placeholder="Search Titles or Descriptions"
+            onChange={this.handleChange}
+          />
+        </Menu.Item>
+      </Menu.Menu>
+    );
+  };
+  ///////////
+  filteredRequests = () => {};
+  ////////////////////////
 
   getRequests = () => {
     fetch("http://localhost:3000/requests", {
@@ -66,12 +89,43 @@ class App extends Component {
   };
 
   homePage = () => {
-    return (
-      <React.Fragment>
-        <h3>Please help support your local Wichita community</h3>
-        <List requests={this.state.requests} user={this.state.user} />
-      </React.Fragment>
-    );
+    if (this.state.searchInput === null) {
+      return (
+        <React.Fragment>
+          <h3>Please help support your local Wichita community</h3>
+          <List requests={this.state.allRequests} user={this.state.user} />
+        </React.Fragment>
+      );
+    } else {
+      let filtered = this.state.allRequests.filter(request => {
+        let searched = this.state.searchInput;
+        let title = request.title
+          .split(" ")
+          .filter(title => title.toLowerCase().match(searched));
+        let description = request.description
+          .split(" ")
+          .filter(scrip => scrip.toLowerCase().match(searched));
+        let category = request.category
+          .split(" ")
+          .filter(cat => cat.toLowerCase().match(searched));
+        let location = request.location
+          .split(" ")
+          .filter(loc => loc.toLowerCase().match(searched));
+        return (
+          title.length > 0 ||
+          description.length > 0 ||
+          category.length > 0 ||
+          location.length > 0
+        );
+      });
+
+      return (
+        <React.Fragment>
+          <h3>Please help support your local Wichita community</h3>)
+          <List requests={filtered} user={this.state.user} />
+        </React.Fragment>
+      );
+    }
   };
 
   handleUserState = response => {
@@ -112,7 +166,7 @@ class App extends Component {
     return (
       <NavBar
         user={this.state.user}
-        requests={this.state.requests}
+        requests={this.state.filteredRequests}
         logged_in={this.state.logged_in}
         changeLogInState={this.changeLogInState}
         getRequests={this.getRequests}
@@ -130,6 +184,7 @@ class App extends Component {
       return (
         <React.Fragment>
           {this.navBar()}
+          {this.searchNav()}
           {this.homePage()}
         </React.Fragment>
       );
@@ -137,6 +192,7 @@ class App extends Component {
       return (
         <React.Fragment>
           {this.navBar()}
+          {this.filteredRequests()}
           {this.showMessages()}
         </React.Fragment>
       );
@@ -144,6 +200,7 @@ class App extends Component {
       return (
         <React.Fragment>
           {this.navBar()}
+          {this.filteredRequests()}
           {this.showProfile()}
         </React.Fragment>
       );

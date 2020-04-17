@@ -137,16 +137,6 @@ class NavBar extends Component {
     );
   };
 
-  navSearch = () => {
-    return (
-      <Menu.Menu position="right">
-        <Menu.Item fixed="right">
-          <Input icon="search" placeholder="Search Titles or Descriptions" />
-        </Menu.Item>
-      </Menu.Menu>
-    );
-  };
-
   navLogOut = () => {
     const { activeItem } = this.state;
 
@@ -191,9 +181,10 @@ class NavBar extends Component {
         <React.Fragment>
           <Menu>
             {this.homePageNav()}
-            {this.navBarMessages()}
+            {/* <NavSearch user= {this.props.user} requests={this.props.requests}/> */}
             {/* {this.navBarProfile()} */}
-            {this.navSearch()}
+            {/* {this.navSearch()} */}
+            {this.navBarMessages()}
             {this.navLogOut()}
           </Menu>
           {/* {this.homePage()} */}
@@ -215,7 +206,7 @@ class NavBar extends Component {
             <nav>
               <Menu>
                 {this.homePageNav()}
-                {this.navSearch()}
+                {/* {this.navSearch()} */}
                 {this.navLogIn()}
               </Menu>
             </nav>

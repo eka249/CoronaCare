@@ -13,6 +13,10 @@ class SignInModal extends Component {
     newCity: "",
     open: true
   };
+
+  // *************
+  // <Form.Group unstackable widths={2}/>
+  // ***************
   handleChange = e => {
     let inputVal = e.target.name;
     this.setState({ ...this.state, [inputVal]: e.target.value });

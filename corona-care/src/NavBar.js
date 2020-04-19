@@ -1,20 +1,8 @@
-import React, { Component, Button } from "react";
-import List from "./List";
+import React, { Component } from "react";
 import NewRequestModal from "./NewRequestModal";
 import SignInModal from "./SignInModal";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  NavLink
-} from "react-router-dom";
-// import NavBar from "./NavBar";
-import Messages from "./Messages";
-import ReactDOM from "react-dom";
-import { Input, Menu, Image } from "semantic-ui-react";
-
-// import "semantic-ui-css/semantic.min.css";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Menu, Image } from "semantic-ui-react";
 
 class NavBar extends Component {
   constructor() {
@@ -23,7 +11,7 @@ class NavBar extends Component {
       activeItem: "home",
       showNewModal: false,
       showNewRequestModal: false,
-      showSignInModal: false
+      showSignInModal: false,
     };
   }
 
@@ -35,37 +23,35 @@ class NavBar extends Component {
     //after onClick of "LogIn"
     this.setState({
       ...this.state,
-      showSignInModal: true
+      showSignInModal: true,
     });
   };
 
-  handleNewRequest = e => {
+  handleNewRequest = (e) => {
     this.setState({ showNewRequestModal: !this.state.showNewRequestModal });
   };
 
-  handleClickSignIn = response => {
+  handleClickSignIn = (response) => {
     //after submitting from SignInModal, the state of showSignInModal will turn to false
     this.setState({
       ...this.state,
-      showSignInModal: false
+      showSignInModal: false,
     });
     this.props.handleUserState(response);
   };
 
   handleRedirectHome = () => {
     this.props.redirectHome("home");
-    // this.setState({ activeItem: name });
   };
   handleRedirectMessages = () => {
     this.props.redirectMessages("myconvos");
-    // this.setState({ activeItem: name });
   };
   //   handleRedirectProfile = () => {
   //     this.props.handleRedirect("myprofile");
   //     // this.setState({ activeItem: name });
   //   };
 
-  handleLinkHome = e => {
+  handleLinkHome = (e) => {
     this.props.redirectHome(e.target.name);
   };
 
@@ -84,7 +70,6 @@ class NavBar extends Component {
               size="small"
               //   src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/wichita/Keeper-CRM0-90eba9295056a36_90ebab7f-5056-a36a-07ed42e3ea553a4a.jpg"
               src="https://cdn.pixabay.com/photo/2019/10/22/13/23/keeper-of-the-plains-4568727_960_720.jpg"
-              fluid
             ></Image>
           </Link>
 
@@ -111,13 +96,11 @@ class NavBar extends Component {
   };
 
   navBarMessages = () => {
-    const { activeItem } = this.state;
-
     return (
       <React.Fragment>
         <Menu.Item
           name="messages"
-          active={activeItem === "messages"}
+          active={this.state.activeItem === "messages"}
           onClick={this.handleRedirectMessages}
           as={Link}
           to="/myconvos"
@@ -138,15 +121,12 @@ class NavBar extends Component {
   };
 
   navLogOut = () => {
-    const { activeItem } = this.state;
-
     return (
       <Menu.Menu position="right">
         <Menu.Item
           position="right"
-          active={activeItem === "Logout"}
-          onClick={this.handleItemClick}
-          onClick={this.props.signOut}
+          active={this.state.activeItem === "Logout"}
+          onClick={(this.handleItemClick, this.props.signOut)}
         >
           Log Out
         </Menu.Item>
@@ -154,19 +134,16 @@ class NavBar extends Component {
     );
   };
   navLogIn = () => {
-    const { activeItem } = this.state;
-
     return (
       <Menu.Item
         name="Log In"
-        active={activeItem === "Log In"}
+        active={this.state.activeItem === "Log In"}
         onClick={this.showLogInModal}
       ></Menu.Item>
     );
   };
 
   render() {
-    const { activeItem } = this.state;
     if (this.state.showSignInModal) {
       return (
         <SignInModal

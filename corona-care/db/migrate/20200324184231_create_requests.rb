@@ -6,6 +6,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :category
       t.string :location
+      t.string :city
       t.timestamps
     end
   end

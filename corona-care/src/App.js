@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
 import List from "./List";
-import SignInModal from "./SignInModal";
-import { Input, Menu, Image } from "semantic-ui-react";
+import { Input, Menu } from "semantic-ui-react";
 // import "semantic-ui-css/semantic.min.css";
 import Messages from "./Messages";
 
@@ -163,7 +162,7 @@ class App extends Component {
     return (
       <NavBar
         user={this.state.user}
-        requests={this.state.filteredRequests}
+        requests={this.state.allRequests}
         logged_in={this.state.logged_in}
         changeLogInState={this.changeLogInState}
         getRequests={this.getRequests}

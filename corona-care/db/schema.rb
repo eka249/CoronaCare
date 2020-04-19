@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_184239) do
     t.text "description"
     t.string "category"
     t.string "location"
+    t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

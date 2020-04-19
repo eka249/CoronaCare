@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { List, Button, Modal, Icon } from "semantic-ui-react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { List, Button, Modal } from "semantic-ui-react";
+import { BrowserRouter as Router } from "react-router-dom";
 // import OpenRequestModal from "./OpenRequestModal";
 import RespondToRequest from "./RespondToRequest";
 

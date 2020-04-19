@@ -13,3 +13,8 @@ requestTest = Request.create(user_ID: 1, title: "This is a test request", descri
 
 requestTest2 = Request.create(user_ID: 1, title: "Allie wants beans", description: "go to Taco Shop for me", category: "Urgent", location: "Harry and Webb")
 
+(1..2).each do |i|
+    Page.create!(title: "Public Page #{i}", content: "Public content #{i}", allow_unauth: true) rescue nil
+    Page.create!(title: "Private Page #{i}", content: "Super secret content #{i}", allow_unauth: false) rescue nil
+  end
+

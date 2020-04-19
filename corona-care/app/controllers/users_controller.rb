@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
     # before_action :user_params, only: [:create]
-    skip_before_action :authorized, only: [:create], raise: false
-   
-  
+    ####################
+    # skip_before_action :authorized, only: [:create], raise: false
+   ############################
+   before_action :authenticate_user
+
+
+
     # def index
     #     users = User.all
     #     render json: users
@@ -16,6 +20,7 @@ class UsersController < ApplicationController
     # not a necessary feature for any user
   
     def profile
+        # render json: current_user.as_json(only: %i(id email))
         render json: {user: UserSerializer.new(current_user)}, status: :accepted
     end
     def create

@@ -9,5 +9,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.timestamps
     end
+
+    add_index :users, %i(username), unique: true
+
   end
 end

@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import Listing from "./Listing";
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.requests != null) {
       return (

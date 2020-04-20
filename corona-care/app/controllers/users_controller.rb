@@ -19,10 +19,23 @@ class UsersController < ApplicationController
     # end
     # not a necessary feature for any user
   
-    def profile
+    def show
         # render json: current_user.as_json(only: %i(id email))
-        render json: {user: UserSerializer.new(current_user)}, status: :accepted
+        # render json: {user: UserSerializer.new(current_user)}, status: :accepted
+
+        @user = User.find_by(username: params[:user][:username])
+        if @user
+            render json: @user
+        else
+            @errors = @user.errors.full_messages
+            render json: @errors
+        end
     end
+
+    def current_user
+        @user = User.find_by(id: params[:id])
+    end
+
     def create
         # @user = User.create
         # (user_params)

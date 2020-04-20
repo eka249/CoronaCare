@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   resources :requests
   resources :messages
   resources :convos
-  resources :users
-  post '/auth', to: 'auth#create'
-  post 'user/token' => 'user_token#create'
+  # resources :users
+  # post '/auth', to: 'auth#create'
+  # post 'user/token' => 'user_token#create'
 
   namespace :api do
-    post 'user/token' => 'user_token#create'
+    resources: users
+    post 'user_token' => 'user_token#create'
     get 'users/current' => 'users#current'
-    resources :pages, only: %i(index show)
+    # resources :pages, only: %i(index show)
   end
 
 

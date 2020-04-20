@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
 
     def index
+        puts "hit index in requests controller"
         @requests = Request.all
         render json: @requests
     end

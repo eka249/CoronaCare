@@ -151,6 +151,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
+  jwt
   knock
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

@@ -5,8 +5,10 @@ import App from "./App";
 import "semantic-ui-css/semantic.min.css";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
+// import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
+  // <CookiesProvider>
   <Router>
     <App />
     {/* <Switch>
@@ -15,6 +17,7 @@ ReactDOM.render(
 }}/>
       </Switch> */}
   </Router>,
+  // </CookiesProvider>,
   document.getElementById("root")
 );
 

@@ -1,5 +1,5 @@
 class ConvosController < ApplicationController
-
+    before_action :authenticate_user
     def show
         # render json: {user: ConvoSerializer.new(current_user)}, status: :accepted
         puts "params[:id]"

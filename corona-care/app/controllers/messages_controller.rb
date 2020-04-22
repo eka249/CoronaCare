@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+    before_action :authenticate_user
+
+    
     def index
         # render json: {user: messageserializer.new(current_user)}, status: :accepted
         messages = Message.all

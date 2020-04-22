@@ -11,39 +11,39 @@ class SignInModal extends Component {
     newPhone: "",
     newPassword: "",
     newCity: "",
-    open: true
+    open: true,
   };
 
   // *************
   // <Form.Group unstackable widths={2}/>
   // ***************
-  handleChange = e => {
+  handleChange = (e) => {
     let inputVal = e.target.name;
     this.setState({ ...this.state, [inputVal]: e.target.value });
   };
 
-  handleSignIn = e => {
+  handleSignIn = (e) => {
     this.setState({
       ...this.state,
-      open: false
+      open: false,
     });
     //routes to auth#create on backend to recieve token
-    fetch("http://localhost:3000/auth", {
+    fetch("http://localhost:3000/user_token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accepts: "application/json",
-        Authorization: `Bearer ${localStorage.token}`
+        Authorization: `Bearer ${localStorage.token}`,
       },
       body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
-      })
+        auth: { username: this.state.username, password: this.state.password },
+      }),
     })
-      .then(response => response.json())
-      .then(response => {
+      .then((response) => response.json())
+      .then((response) => {
         if (response.jwt) {
           localStorage.setItem("token", response.jwt);
+          // this.props.history.push("/");
           // this.props.handleUserState(response);
           this.props.handleClickSignIn(response);
         }
@@ -55,14 +55,14 @@ class SignInModal extends Component {
       ...this.state,
       password: this.state.newPassword,
       username: this.state.newUsername,
-      open: false
+      open: false,
     });
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.token}`
+        Authorization: `Bearer ${localStorage.token}`,
       },
       body: JSON.stringify({
         firstName: this.state.newFirstName,
@@ -70,10 +70,10 @@ class SignInModal extends Component {
         lastName: this.state.newLastName,
         phone: this.state.newPhone,
         username: this.state.newUsername,
-        city: this.state.newCity
-      })
+        city: this.state.newCity,
+      }),
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(this.handleSignIn);
   };
 

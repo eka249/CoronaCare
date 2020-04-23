@@ -17,7 +17,7 @@ class App extends Component {
       myprofile: false,
       home: true,
       filteredRequests: null,
-      searchInput: null
+      searchInput: null,
     };
     this.getRequests();
   }
@@ -27,7 +27,7 @@ class App extends Component {
       ...this.state,
       home: true,
       myconvos: false,
-      myprofile: false
+      myprofile: false,
     });
   };
   redirectMessages = () => {
@@ -35,25 +35,25 @@ class App extends Component {
       ...this.state,
       home: false,
       myconvos: true,
-      myprofile: false
+      myprofile: false,
     });
   };
-  changeDataState = data => {
+  changeDataState = (data) => {
     //needed an extra function because .then() was exceeding in componentDidMount
     this.setState({
       ...this.state,
-      allRequests: data
+      allRequests: data,
     });
   };
   showLogInModal = () => {
     //after onClick of "LogIn"
     this.setState({
       ...this.state,
-      showSignInModal: true
+      showSignInModal: true,
     });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   searchNav = () => {
@@ -77,11 +77,13 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
         Accepts: "application/json",
-        Authorization: `Bearer ${localStorage.token}`
-      }
+        // ,
+        // Authorization: `Bearer ${localStorage.token}`,
+      },
     })
-      .then(response => response.json())
-      .then(data => this.changeDataState(data));
+      .then((response) => response.json())
+      .then((data) => this.changeDataState(data))
+      .then((data) => console.log(data));
   };
 
   homePage = () => {
@@ -93,20 +95,20 @@ class App extends Component {
         </React.Fragment>
       );
     } else {
-      let filtered = this.state.allRequests.filter(request => {
+      let filtered = this.state.allRequests.filter((request) => {
         let searched = this.state.searchInput;
         let title = request.title
           .split(" ")
-          .filter(title => title.toLowerCase().match(searched));
+          .filter((title) => title.toLowerCase().match(searched));
         let description = request.description
           .split(" ")
-          .filter(scrip => scrip.toLowerCase().match(searched));
+          .filter((scrip) => scrip.toLowerCase().match(searched));
         let category = request.category
           .split(" ")
-          .filter(cat => cat.toLowerCase().match(searched));
+          .filter((cat) => cat.toLowerCase().match(searched));
         let location = request.location
           .split(" ")
-          .filter(loc => loc.toLowerCase().match(searched));
+          .filter((loc) => loc.toLowerCase().match(searched));
         return (
           title.length > 0 ||
           description.length > 0 ||
@@ -124,11 +126,12 @@ class App extends Component {
     }
   };
 
-  handleUserState = response => {
+  handleUserState = (response, token) => {
     this.setState({
       ...this.state,
       logged_in: true,
-      user: response.user
+      user: response.user,
+      token: token,
     });
     // console.log(
     //   "this.state.user.convos in app through user",

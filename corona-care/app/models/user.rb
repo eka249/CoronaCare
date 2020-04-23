@@ -6,7 +6,7 @@ class User < ApplicationRecord
     #has_secure_password comes with the bcrypt gem and hashes the password
 
 
-    validates :username, presence: true, uniqueness: {case_sensitive: true}
+    validates :email, presence: true, uniqueness: {case_sensitive: true}
     # validates :first_name, presence: true  
     # validates :last_name, presence: true  
     # validates :city, presence: true  
@@ -15,12 +15,12 @@ class User < ApplicationRecord
     # change this to more when not testing
 
 
-    # change this so that usernames have to have charactersistics
+    # change this so that emails have to have charactersistics
 
     def to_token_payload
         {
             sub: id,
-            username: username
+            email: email
         }
     end
 end

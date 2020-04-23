@@ -31,7 +31,7 @@ class NavBar extends Component {
     this.setState({ showNewRequestModal: !this.state.showNewRequestModal });
   };
 
-  handleClickSignIn = (response) => {
+  handleClickSignIn = (response, token) => {
     //after submitting from SignInModal, the state of showSignInModal will turn to false
     this.setState({
       ...this.state,

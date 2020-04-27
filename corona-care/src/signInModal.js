@@ -3,77 +3,83 @@ import { Modal, Form, Header, Button } from "semantic-ui-react";
 
 class SignInModal extends Component {
   state = {
-    username: "",
+    email: "",
     password: "",
     newFirstName: "",
     newLastName: "",
-    newUsername: "",
+    newEmail: "",
     newPhone: "",
     newPassword: "",
     newCity: "",
-    open: true
+    open: true,
   };
 
   // *************
   // <Form.Group unstackable widths={2}/>
   // ***************
-  handleChange = e => {
+  handleChange = (e) => {
     let inputVal = e.target.name;
     this.setState({ ...this.state, [inputVal]: e.target.value });
   };
 
-  handleSignIn = e => {
+  handleSignIn = (e) => {
     this.setState({
       ...this.state,
-      open: false
+      open: false,
     });
-    //routes to auth#create on backend to recieve token
-    fetch("http://localhost:3000/auth", {
+    //routes to user_token on backend to create token
+    fetch("http://localhost:3000/user_token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accepts: "application/json",
-        Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
-      })
+        auth: { password: this.state.password },
+      }),
     })
-      .then(response => response.json())
-      .then(response => {
-        if (response.jwt) {
-          localStorage.setItem("token", response.jwt);
-          // this.props.handleUserState(response);
-          this.props.handleClickSignIn(response);
-        }
-      });
+      .then((response) => response.json())
+      .then((response) => this.handleToken(response));
+  };
+
+  handleToken = (response) => {
+    //avoids saving in local storage
+    let inMemoryToken = {
+      token: response.jwt,
+      // ,expiry: jwt_token_expiry
+      //finish this expiry once i read documentation
+    };
+    this.props.handleClickSignIn(response, inMemoryToken);
+
+    // if (!noRedirect) {
+    //   Router.push('/app')
+    // }
   };
 
   handleSignUp = () => {
+    //set the state for future functions as a non-new user
     this.setState({
       ...this.state,
       password: this.state.newPassword,
-      username: this.state.newUsername,
-      open: false
+      email: this.state.newEmail,
+      open: false,
     });
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         firstName: this.state.newFirstName,
         password: this.state.newPassword,
         lastName: this.state.newLastName,
         phone: this.state.newPhone,
-        username: this.state.newUsername,
-        city: this.state.newCity
-      })
+        email: this.state.newEmail,
+        city: this.state.newCity,
+      }),
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(this.handleSignIn);
   };
 
@@ -83,12 +89,12 @@ class SignInModal extends Component {
         <Header content="Sign In" as="h2"></Header>
         <Modal.Content>
           <Form.Input
-            label="Username "
-            name="username"
+            label="Email "
+            name="email"
             // required
             type="text"
-            placeholder="Username"
-            id="username"
+            placeholder="Email"
+            id="email"
             onChange={this.handleChange}
           />
           <Form.Input
@@ -144,12 +150,12 @@ class SignInModal extends Component {
             onChange={this.handleChange}
           />
           <Form.Input
-            label=" New username "
+            label=" New Email "
             // required
             type="text"
             placeholder="jane1978"
-            name="newUsername"
-            id="newUsername"
+            name="newEmail"
+            id="newEmail"
             onChange={this.handleChange}
           />
           <Form.Input

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :firstName, :lastName, :username, :city, :phone, :password_digest, :conversations, :messages
+  attributes :id, :firstName, :lastName, :email, :city, :phone, :password_digest, :conversations, :messages
   
   def conversations
     self.object.convos.map do |convo|

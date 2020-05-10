@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NewRequestModal from "./NewRequestModal";
-import SignInModal from "./SignInModal";
+import SignInModal from "./signInModal";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Menu, Image } from "semantic-ui-react";
 
